@@ -1,15 +1,13 @@
 module Main (main) where
 import System.IO
-import System.Directory
 
-import Lib
 import qualified Models.Hero as H
 import Models.Ficha
 import qualified Models.Npc as N 
 
 main :: IO ()
 main = do
-  arquivo_ficha <- openFile "./database/ficha.txt" ReadMode
+  arquivo_ficha <- openFile "src/database/fichaMage.txt" ReadMode
   content_ficha <- hGetContents arquivo_ficha
   print content_ficha
 

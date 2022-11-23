@@ -1,0 +1,1 @@
+Ficha {vida=30, forca=30, destreza=25, constituicao=25, inteligencia=15, mana=15, defesa=30, stamina=10, acerto=30, experiencia=1000, armadura=20, arma=("Espada", 15, 0, 0.9), pocao=20}

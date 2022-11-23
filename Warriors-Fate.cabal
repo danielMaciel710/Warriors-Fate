@@ -26,6 +26,9 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Models.Ficha
+      Models.Hero
+      Models.Npc
   other-modules:
       Paths_Warriors_Fate
   hs-source-dirs:
@@ -38,9 +41,6 @@ library
 executable Warriors-Fate-exe
   main-is: Main.hs
   other-modules:
-      Models.Ficha
-      Models.Hero
-      Models.Npc
       Paths_Warriors_Fate
   hs-source-dirs:
       app
