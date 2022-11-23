@@ -38,13 +38,19 @@ library
 executable Warriors-Fate-exe
   main-is: Main.hs
   other-modules:
+      Models.Ficha
+      Models.Hero
+      Models.Npc
       Paths_Warriors_Fate
   hs-source-dirs:
       app
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       Warriors-Fate
+    , aeson
     , base >=4.7 && <5
+    , bytestring
+    , directory
   default-language: Haskell2010
 
 test-suite Warriors-Fate-test

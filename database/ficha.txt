@@ -1,0 +1,1 @@
+Ficha {vida=100,forca=50, destreza=30, constituicao=20, inteligencia=90, mana=50, defesa=50,stamina=20, acerto = 30}
