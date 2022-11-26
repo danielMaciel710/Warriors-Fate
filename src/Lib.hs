@@ -1,8 +1,13 @@
 module Lib
     ( 
         menu,
-        centerText
+        centerText,
+        strip,
+        lowerCase
     ) where
+
+import Data.Char
+import qualified Data.Text as T
 
 menu :: Int -> Int -> IO ()
 menu height width = do
@@ -26,3 +31,9 @@ centerText texto height width = verticalSpaces ++ horizontalSpaces ++ texto ++ h
       halfWidth = width `div` 2
       verticalSpaces = replicate halfHeight '\n'
       horizontalSpaces = replicate halfWidth ' '
+
+strip :: String -> String
+strip  = T.unpack . T.strip . T.pack
+
+lowerCase :: String -> String
+lowerCase = map toLower
