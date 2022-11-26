@@ -1,0 +1,1 @@
+Hero {nome = "Daniel", classe = "Mago", ficha = Ficha {vida = 20, forca = 15, destreza = 18, constituicao = 20, inteligencia = 30, mana = 35, defesa = 30, stamina = 10, acerto = 30, experiencia = 1000, armadura = 10, arma = ("Cajado",5,10,0.8), pocao = 20}}
