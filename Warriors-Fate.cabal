@@ -29,6 +29,7 @@ library
       Models.Ficha
       Models.Hero
       Models.Npc
+      Terminal
       StartGame
   other-modules:
       Paths_Warriors_Fate

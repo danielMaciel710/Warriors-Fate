@@ -5,8 +5,13 @@ import StartGame
 import qualified Models.Hero as H
 import Models.Ficha
 import qualified Models.Npc as N 
+import qualified Terminal
+import System.IO
+import System.IO.Unsafe (unsafeDupablePerformIO)
+import Lib
 
 main :: IO ()
+
 main = do
   initial
   arquivo_hero <- readFile "src/database/Hero.txt" 
