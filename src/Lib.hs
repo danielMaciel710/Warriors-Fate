@@ -1,6 +1,13 @@
 module Lib
-    ( someFunc
+    ( strip
+    , lowerCase
     ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+import Data.Char
+import qualified Data.Text as T
+
+strip :: String -> String
+strip  = T.unpack . T.strip . T.pack
+
+lowerCase :: String -> String
+lowerCase = map toLower

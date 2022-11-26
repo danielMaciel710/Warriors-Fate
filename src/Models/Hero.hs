@@ -7,3 +7,6 @@ module Models.Hero where
     ficha :: Ficha
     
   } deriving (Show, Read)
+  getNome hero = nome hero
+  getClasse hero = classe hero
+  getFicha hero = ficha hero
