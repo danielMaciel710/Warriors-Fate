@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- directory
+- text
 
 ghc-options:
 - -Wall
@@ -46,6 +48,10 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - Warriors-Fate
+    - directory
+    - aeson
+    - bytestring
+    - text
     when:
        - condition: false
          other-modules: Paths_Warriors-Fate
