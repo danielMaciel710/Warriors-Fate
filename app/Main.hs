@@ -9,12 +9,16 @@ import qualified Terminal
 import System.IO
 import System.IO.Unsafe (unsafeDupablePerformIO)
 import Lib
+import GamePart1
 
 main :: IO ()
 
 main = do
   initial
   arquivo_hero <- readFile "src/database/Hero.txt" 
-
   let hero = read arquivo_hero :: H.Hero
-  print $ H.getNome hero
+  let nome = H.getNome hero
+  
+  putStrLn ("Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: ")
+  token <- getLine
+  part1 nome

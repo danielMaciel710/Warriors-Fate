@@ -2,13 +2,15 @@ module Lib
     ( 
         centerText,
         centerTextHeight,
+        centerTextHeight2,
         centerTextNotUp,
         strip,
-        lowerCase
+        lowerCase,
     ) where
 
 import Data.Char
 import qualified Data.Text as T
+import Terminal
 
 centerText :: String -> Int -> Int -> String
 centerText texto height width = verticalSpaces ++ horizontalSpaces ++ texto ++ horizontalSpaces ++ verticalSpaces
@@ -29,9 +31,14 @@ centerTextNotUp texto height width = horizontalSpaces ++ texto ++ horizontalSpac
    where
       halfHeight = height `div` 2
       halfWidth = width `div` 2
-      verticalSpaces = replicate halfHeight '\n'
       horizontalSpaces = replicate halfWidth ' '
+      verticalSpaces = replicate halfHeight '\n'
 
+centerTextHeight2 :: String -> Int -> String
+centerTextHeight2 texto height = verticalSpaces ++ texto ++ verticalSpaces
+   where
+      halfHeight = height `div` 2
+      verticalSpaces = replicate halfHeight '\n'
 
 strip :: String -> String
 strip  = T.unpack . T.strip . T.pack

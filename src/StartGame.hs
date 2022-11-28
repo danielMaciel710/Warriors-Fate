@@ -41,6 +41,9 @@ startGame = do
   chooseClass
 
 chooseClass = do
+  putStrLn (centerTextHeight2 ("Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros em um momento específico de sua jornada eram atraídos para uma misteriosa caverna, esta que prometia à aqueles que superassem seus desafios um imenso poder...") height)
+  putStrLn "Aperte qualquer tecla para continuar: "
+  token <- getLine
   putStrLn (centerText ("Escolha sua classe: \n Guerreiro ou Mago?") height width)
   option <- getLine
   if (lowerCase $ strip option) == "mago" then magoPath 

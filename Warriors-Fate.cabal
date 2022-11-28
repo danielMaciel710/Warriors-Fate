@@ -25,12 +25,13 @@ source-repository head
 
 library
   exposed-modules:
+      GamePart1
       Lib
       Models.Ficha
       Models.Hero
       Models.Npc
-      Terminal
       StartGame
+      Terminal
   other-modules:
       Paths_Warriors_Fate
   hs-source-dirs:
