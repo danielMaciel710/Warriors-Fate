@@ -20,5 +20,5 @@ main = do
   let nome = H.getNome hero
   
   putStrLn ("Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: ")
-  token <- getLine
-  part1 nome
+  continuar
+  part1 0 nome

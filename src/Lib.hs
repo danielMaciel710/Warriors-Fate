@@ -6,6 +6,8 @@ module Lib
         centerTextNotUp,
         strip,
         lowerCase,
+        continuar,
+        batalha
     ) where
 
 import Data.Char
@@ -45,3 +47,12 @@ strip  = T.unpack . T.strip . T.pack
 
 lowerCase :: String -> String
 lowerCase = map toLower
+
+continuar :: IO ()
+continuar = do
+  putStrLn "Digite qualque tecla para continuar..."
+  token <- getLine
+  print ""
+
+batalha :: String
+batalha = "Você está lutando" -- Só para testes
