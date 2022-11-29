@@ -13,10 +13,10 @@ import Batalha
 main :: IO ()
 
 main = do
-  --initial
+  initial
   -- arquivo_hero <- readFile "src/database/Hero.txt" 
   -- let hero = read arquivo_hero :: H.Hero
   -- let ficha = (H.getFicha hero)
   -- let darDano = F.damage ficha 21 
   -- putStrLn $ show ( darDano )
-  --batalha1
+  batalha1
