@@ -8,9 +8,9 @@ module Models.Ficha where
     mana:: Int,
     defesa:: Int,
     stamina:: Int,
-    acerto:: Int,
     experiencia:: Int,
     armadura:: Int,
-    arma:: (String, Int, Int, Float),
+    arma:: (String, Int, Int),
     pocao:: Int
   } deriving (Show, Read)
+  damage ficha dano = Ficha ((vida ficha) - (dano - (armadura ficha))) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
