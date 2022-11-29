@@ -10,6 +10,7 @@ import System.IO
 import System.IO.Unsafe (unsafeDupablePerformIO)
 import Lib
 import GamePart1
+import GamePart2
 
 main :: IO ()
 
@@ -22,3 +23,4 @@ main = do
   putStrLn ("Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: ")
   continuar
   part1 0 nome
+  part2 nome
