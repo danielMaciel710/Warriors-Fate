@@ -29,6 +29,7 @@ library
       Eventos2
       GamePart1
       GamePart2
+      GamePart3
       Lib
       Models.Ficha
       Models.Hero

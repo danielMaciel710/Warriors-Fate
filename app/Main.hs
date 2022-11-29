@@ -11,6 +11,7 @@ import System.IO.Unsafe (unsafeDupablePerformIO)
 import Lib
 import GamePart1
 import GamePart2
+import GamePart3
 
 main :: IO ()
 
@@ -24,3 +25,4 @@ main = do
   continuar
   part1 0 nome
   part2 nome
+  part3 
