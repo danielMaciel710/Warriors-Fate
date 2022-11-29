@@ -4,7 +4,7 @@ Acompanhe a jornada de um grande guerreiro que em algum momento de sua jornada f
 * Projeto feito em Haskell com Stack
 * Todo o jogo acontecerá no terminal
 ## Jogabilidade
-Todas as ações do jogador serão através da entrada de palavras ou frases. O decorrer da história aparecerá na tela do terminal em forma de texto. O jogador poderá se mover, atacar, usar itens, habilidades específicas e interagir com o cenário de forma bem simples, tudo isso escrevendo quando solicitado a ação que quiser realizar.
+Todas as ações do jogador serão através da entrada de palavras ou frases. O decorrer da história aparecerá na tela do terminal em forma de texto. O jogador poderá se mover, atacar, usar itens, habilidades específicas e interagir com o cenário de forma bem simples, tudo isso escrevendo quando solicitado a ação que quiser realizar. O jogador poderá escolher entre duas classes: Guerreiro ou Mago. Ambos tem 3 habilidades mais o ataque básico e a capacidade de defender os danos recebidos na próxima rodada.
 ## Como jogar
 * Será preciso ter instalado o GHC, Cabal e o Stack;
 * Baixe o arquivo do projeto compactado ou clone o projeto pelo git;
