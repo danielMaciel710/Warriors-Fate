@@ -26,7 +26,9 @@ source-repository head
 library
   exposed-modules:
       Eventos
+      Eventos2
       GamePart1
+      GamePart2
       Lib
       Models.Ficha
       Models.Hero
