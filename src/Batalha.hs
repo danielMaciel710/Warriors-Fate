@@ -203,7 +203,14 @@ ataqueEsqueleto = do
   putStrLn $ "O esqueleto te ataca dando " ++ (show dano) ++ " de dano"
   showFicha
   putStrLn "------ ------"
-  
+ 
+checkHero = do
+  arquivo_hero <- readFile' "src/database/Hero.txt"
+  let hero = read arquivo_hero :: H.Hero
+  let vida = H.getVida hero
+  if vida <= 0 then gameOver
+  else putStrLn turnoHero
+ 
 checkEsqueleto = do
   arquivo_esqueleto <- readFile "src/database/Esqueleto.txt"
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
