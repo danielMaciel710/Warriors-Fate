@@ -1,1 +1,1 @@
-Ficha {vida=20, forca=15, destreza=18, constituicao=20, inteligencia=30, mana=35, defesa=30, stamina=10, experiencia=1000, armadura=10, arma=["Cajado", "5", "10"], pocao=20}
+Ficha {vida=30, forca=0, destreza=20, constituicao=10, inteligencia=20, mana=100, defesa=30, stamina=0, experiencia=1000, armadura=10, arma=["Cajado", "5", "10"], pocao=20}
