@@ -115,7 +115,7 @@ caminho2_2 nome = do
 
 
 checkHero = do
-  arquivo_hero <- readFile "src/database/Hero.txt"
+  arquivo_hero <- readFile' "src/database/Hero.txt"
   let hero = read arquivo_hero :: H.Hero
   let vida = H.getVida hero
   if vida <= 0 
