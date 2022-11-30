@@ -21,7 +21,7 @@ main = do
   let hero = read arquivo_hero :: H.Hero
   let nome = H.getNome hero
   
-  putStrLn ("Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: ")
+  putStrLn ("Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: \n")
   continuar
   part1 0 nome
   part2 nome
