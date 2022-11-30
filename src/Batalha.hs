@@ -47,20 +47,20 @@ enrijecer = do
 
 
 acao = do 
-  putStrLn "------  ------ \n*atacar* *habilidade*\n------  ------ "
+  putStrLn "------  ------ \n*ataque fisico* *ataque magico* *habilidade*\n------  ------ "
   option <- getLine
-  if (lowerCase $ strip option) == "atacar" then atacar 
-  --else if (lowerCase $ strip option) == "defender" then defender
+  if (lowerCase $ strip option) == "ataque fisico" then ataqueFisico
+  else if (lowerCase $ strip option) == "ataque magico" then ataqueMagico
   --else if (lowerCase $ strip option) == "habilidade" then habilidade
   else invalidClass
 
-atacar:: IO()
-atacar = do
+ataqueFisico:: IO()
+ataqueFisico = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero
   arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
-  let dano = H.ataqueNormal
+  let dano = H.ataqueFisico hero
   let darDano = E.damage esqueleto dano
   writeFile "src/database/Esqueleto.txt" ( show darDano )
   
@@ -68,7 +68,22 @@ atacar = do
   putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
   showEsqueleto
   putStrLn "------ ------"
-  
+
+ataqueMagico:: IO()
+ataqueMagico = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
+  let esqueleto = read arquivo_esqueleto :: E.Esqueleto
+  let dano = H.ataqueMagico hero
+  let darDano = E.damage esqueleto dano
+  writeFile "src/database/Esqueleto.txt" ( show darDano )
+    
+  putStrLn "------ ------"
+  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  showEsqueleto
+  putStrLn "------ ------"
+
 ataqueEsqueleto = do
   let dano = E.darDano
   arquivo_hero <- readFile' "src/database/Hero.txt" 
