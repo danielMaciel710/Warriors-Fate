@@ -29,7 +29,6 @@ turnoEsqueleto = do
   if vida <= 20 then esqueletoEspecial
   else ataqueEsqueleto
 
-
 esqueletoEspecial = do
   arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
@@ -45,13 +44,13 @@ enrijecer = do
   showEsqueleto
   turnoHero
 
-
 acao = do 
   putStrLn "------  ------ \n*ataque fisico* *ataque magico* *habilidade*\n------  ------ "
   option <- getLine
   if (lowerCase $ strip option) == "ataque fisico" then ataqueFisico
   else if (lowerCase $ strip option) == "ataque magico" then ataqueMagico
   else if (lowerCase $ strip option) == "habilidade" then habilidade
+  else if (lowerCase $ strip option) == "nada" then turnoEsqueleto
   else invalidClass
 
 habilidade = do
