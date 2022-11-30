@@ -5,18 +5,16 @@ module Lib
         lowerCase,
         gameOver,
         showFicha,
-        continuar,
-        batalha
+        continuar
     ) where
 
 import Data.Char
 import qualified Data.Text as T
 import qualified Models.Hero as H
 import System.IO
-import Terminal
 
 formataText :: String -> String
-formataText texto = "\n" ++ texto ++ "\n"
+formataText texto  = "\n-------------------------------------------------------------------------------\n" ++ texto ++ "\n-------------------------------------------------------------------------------\n"
 
 strip :: String -> String
 strip  = T.unpack . T.strip . T.pack
@@ -31,13 +29,10 @@ gameOver = do
 showFicha = do 
   arquivo_hero <- readFile' "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero
-  putStrLn $ show $ H.ficha hero
+  putStrLn $ (formataText (show $ H.ficha hero))
 
 continuar :: IO ()
 continuar = do
-  putStrLn "Digite qualque tecla para continuar..."
+  putStrLn "Aperte qualquer tecla para continuar..."
   token <- getLine
-  print ""
-
-batalha :: String
-batalha = "Você está lutando" -- Só para testes
+  putStrLn ""

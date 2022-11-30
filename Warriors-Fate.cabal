@@ -36,7 +36,6 @@ library
       Models.Ficha
       Models.Hero
       StartGame
-      Terminal
   other-modules:
       Paths_Warriors_Fate
   hs-source-dirs:

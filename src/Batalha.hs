@@ -12,7 +12,7 @@ import Lib
 batalha1 = do
   let reset = E.reset
   writeFile "src/database/Esqueleto.txt" ( show reset )
-  putStrLn "aparece um esqueleto..."
+  putStrLn (formataText "PREPARE-SE, ALGUÉM SE APROXIMA!!!")
   showEsqueleto
   putStrLn "Selecione uma ação:"
   arquivo_hero <- readFile' "src/database/Hero.txt" 
@@ -48,7 +48,7 @@ enrijecer = do
   turnoHero
 
 acao = do 
-  putStrLn "------  ------ \n*ataque fisico* *ataque magico* *habilidade*\n------  ------ "
+  putStrLn (formataText "*ataque fisico* *ataque magico* *habilidade*")
   option <- getLine
   if (lowerCase $ strip option) == "ataque fisico" then ataqueFisico
   else if (lowerCase $ strip option) == "ataque magico" then ataqueMagico
@@ -63,8 +63,8 @@ habilidade = do
   else habilidadeMago
 
 habilidadeWarrior = do
-  putStrLn "Você possui as seguintes habilidades:"
-  putStrLn "1: Golpe Concentrado (20) 2: Golpe Giratório (30) 3: Cura (50)"
+  putStrLn "Habilidades:\n"
+  putStrLn (formataText "1: Golpe Concentrado (20) 2: Golpe Giratório (30) 3: Cura (50)")
   option <- getLine
   if (lowerCase $ strip option) == "1" then habilidadeUm 
   else if (lowerCase $ strip option) == "2" then habilidadeDois
@@ -72,8 +72,8 @@ habilidadeWarrior = do
   else invalidClass
 
 habilidadeMago = do
-  putStrLn "Você possui as seguintes habilidades:"
-  putStrLn "1: Raio de Gelo (20) 2: Bola de Fogo (30) 3: Cura (50)"
+  putStrLn "Habilidades:\n"
+  putStrLn (formataText "1: Raio de Gelo (20) 2: Bola de Fogo (30) 3: Cura (50)")
   option <- getLine
   if (lowerCase $ strip option) == "1" then verifySpellOne 
   else if (lowerCase $ strip option) == "2" then verifySpellTwo
@@ -128,10 +128,8 @@ habilidadeUm = do
   let darDano = E.damage esqueleto dano
   writeFile "src/database/Esqueleto.txt" ( show darDano )
   
-  putStrLn "------ ------"
-  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  putStrLn $ (formataText "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!")
   showEsqueleto
-  putStrLn "------ ------"
 
 habilidadeDois = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
@@ -145,10 +143,8 @@ habilidadeDois = do
   let darDano = E.damage esqueleto dano
   writeFile "src/database/Esqueleto.txt" ( show darDano )
   
-  putStrLn "------ ------"
-  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  putStrLn $ (formataText "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!")
   showEsqueleto
-  putStrLn "------ ------"
 
 habilidadeTres = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
@@ -158,10 +154,8 @@ habilidadeTres = do
   let cura = H.cura updatedHero
   writeFile "src/database/Hero.txt" ( show cura )
   
-  putStrLn "------ ------"
-  putStrLn $ "Você se cura!"
+  putStrLn $ (formataText "Você se cura!")
   showEsqueleto
-  putStrLn "------ ------"
 
 ataqueFisico:: IO()
 ataqueFisico = do
@@ -173,10 +167,8 @@ ataqueFisico = do
   let darDano = E.damage esqueleto dano
   writeFile "src/database/Esqueleto.txt" ( show darDano )
   
-  putStrLn "------ ------"
-  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  putStrLn $ (formataText "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!")
   showEsqueleto
-  putStrLn "------ ------"
 
 ataqueMagico:: IO()
 ataqueMagico = do
@@ -188,10 +180,8 @@ ataqueMagico = do
   let darDano = E.damage esqueleto dano
   writeFile "src/database/Esqueleto.txt" ( show darDano )
     
-  putStrLn "------ ------"
-  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  putStrLn $ (formataText "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!")
   showEsqueleto
-  putStrLn "------ ------"
 
 ataqueEsqueleto = do
   let dano = E.darDano
@@ -202,10 +192,8 @@ ataqueEsqueleto = do
   let updatedHero = H.updateFicha hero updatedFicha
   writeFile "src/database/Hero.txt" ( show updatedHero )
   
-  putStrLn "------ ------"
-  putStrLn $ "O esqueleto te ataca dando " ++ (show dano) ++ " de dano"
+  putStrLn $ (formataText "O esqueleto te ataca dando " ++ (show dano) ++ " de dano")
   showFicha
-  putStrLn "------ ------"
   checkHero
  
 checkHero = do
@@ -223,24 +211,24 @@ checkEsqueleto = do
   else turnoEsqueleto
 
 fimDeBatalha = do
-  putStrLn "You won the battle!"
+  putStrLn (formataText "You won the battle!")
 
 invalidClass = do
-  putStrLn "Eu posso utilizar as seguintes habilidades..."
+  putStrLn (formataText "Eu posso utilizar as seguintes habilidades...")
   acao
 
 insuficienteMana = do
-  putStrLn "Você não possui mana suficiente para utilizar essa habilidade!"
+  putStrLn (formataText "Você não possui mana suficiente para utilizar essa habilidade!")
   acao
 
 insuficienteStamina = do
-  putStrLn "Você não possui stamina suficiente para utilizar essa habilidade!"
+  putStrLn (formataText "Você não possui stamina suficiente para utilizar essa habilidade!")
   acao
 
 showEsqueleto = do
   arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
-  putStrLn $ "Esqueleto {Vida: " ++ (show $ E.vida esqueleto) ++ ", armadura: " ++ (show $ E.armadura esqueleto) ++ "}"
+  putStrLn $ (formataText ("Esqueleto:\nVida: " ++ (show $ E.vida esqueleto) ++ "\nArmadura: " ++ (show $ E.armadura esqueleto)))
 
 resetHero = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
@@ -248,4 +236,3 @@ resetHero = do
   let updatedHero = H.reset hero
   writeFile "src/database/Hero.txt" ( show updatedHero )
   turnoHero
-  
