@@ -26,10 +26,15 @@ source-repository head
 library
   exposed-modules:
       Batalha
+      Eventos
+      Eventos2
+      GamePart1
+      GamePart2
+      GamePart3
       Lib
       Models.Esqueleto
       Models.Ficha
-      Models.Hero
+      Models.Her
       StartGame
       Terminal
   other-modules:
