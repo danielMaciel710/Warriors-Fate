@@ -38,7 +38,7 @@ showHelp = do
 
 startGame = do
   chooseClass
-  arquivo_hero <- readFile "src/database/Hero.txt"
+  arquivo_hero <- readFile' "src/database/Hero.txt"
   let hero = read arquivo_hero :: H.Hero
   let nome = H.getNome hero
 
@@ -63,7 +63,7 @@ magoPath = do
   putStrLn (formataText ("Digite o seu nome: "))
 
   nome <- getLine
-  content_ficha <- readFile "src/database/fichaMage.txt"
+  content_ficha <- readFile' "src/database/fichaMage.txt"
   let atributos = read content_ficha :: Ficha
   let hero = H.Hero (strip nome) "Mago" atributos
   writeFile "src/database/Hero.txt" (show hero)
@@ -73,7 +73,7 @@ warriorPath = do
   putStrLn (formataText ("Digite o seu nome: "))
 
   nome <- getLine
-  content_ficha <- readFile "src/database/fichaWarrior.txt"
+  content_ficha <- readFile' "src/database/fichaWarrior.txt"
   let atributos = read content_ficha :: Ficha
   let hero = H.Hero (strip nome) "Guerreiro" atributos
   writeFile "src/database/Hero.txt" (show hero)
