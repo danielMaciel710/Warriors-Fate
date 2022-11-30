@@ -39,6 +39,16 @@ module Models.Ficha where
   cura ficha classe = if classe == "Guerreiro" then Ficha ((vida ficha) + (forca ficha)) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
     else Ficha ((vida ficha) + (inteligencia ficha)) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)  
 
+  getMana :: Ficha -> Int
+  getMana ficha = mana ficha
+
+  getStamina :: Ficha -> Int
+  getStamina ficha = stamina ficha
+  
+  usarHabilidade :: Ficha -> Int -> String -> Ficha
+  usarHabilidade ficha qtd classe =  if(classe == "Mago") then Ficha (vida ficha) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) ((mana ficha) - qtd) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
+    else Ficha (vida ficha) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha)  (defesa ficha) ((stamina ficha) - qtd) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
+
   damage ficha dano = if (dano > (armadura ficha)) then 
       Ficha ((vida ficha) - (dano - (armadura ficha))) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
     else ficha

@@ -72,15 +72,54 @@ habilidadeMago = do
   putStrLn "Você possui as seguintes habilidades:"
   putStrLn "1: Raio de Gelo (20) 2: Bola de Fogo (30) 3: Cura (50)"
   option <- getLine
-  if (lowerCase $ strip option) == "1" then habilidadeUm 
-  else if (lowerCase $ strip option) == "2" then habilidadeDois
-  else if (lowerCase $ strip option) == "3" then habilidadeTres
+  if (lowerCase $ strip option) == "1" then verifySpellOne 
+  else if (lowerCase $ strip option) == "2" then verifySpellTwo
+  else if (lowerCase $ strip option) == "3" then verifySpellThree
   else invalidClass
+
+verifySpellOne = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  if (H.getClasse hero) == "Mago" then do
+    let qtdMana = H.getMana hero
+    if qtdMana >= 20 then habilidadeUm
+    else insuficienteMana
+  else do
+    let qtdStamina = H.getStamina hero
+    if qtdStamina >= 20 then habilidadeUm
+    else insuficienteStamina 
+    
+verifySpellTwo = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  if (H.getClasse hero) == "Mago" then do
+    let qtdMana = H.getMana hero
+    if qtdMana >= 30 then habilidadeDois
+    else insuficienteMana
+  else do
+    let qtdStamina = H.getStamina hero
+    if qtdStamina >= 30 then habilidadeDois
+    else insuficienteStamina 
+
+verifySpellThree = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  if (H.getClasse hero) == "Mago" then do
+    let qtdMana = H.getMana hero
+    if qtdMana >= 50 then habilidadeTres
+    else insuficienteMana
+  else do
+    let qtdStamina = H.getStamina hero
+    if qtdStamina >= 50 then habilidadeTres
+    else insuficienteStamina 
 
 habilidadeUm = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero
   arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
+  let updatedFicha = H.usarHabilidade hero 20
+  let updatedHero = H.updateFicha hero updatedFicha
+  writeFile "src/database/Hero.txt" ( show updatedHero )
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
   let dano = H.danoConcentrado hero
   let darDano = E.damage esqueleto dano
@@ -95,6 +134,9 @@ habilidadeDois = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero
   arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
+  let updatedFicha = H.usarHabilidade hero 30
+  let updatedHero = H.updateFicha hero updatedFicha
+  writeFile "src/database/Hero.txt" ( show updatedHero )
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
   let dano = H.danoArea hero
   let darDano = E.damage esqueleto dano
@@ -108,7 +150,9 @@ habilidadeDois = do
 habilidadeTres = do
   arquivo_hero <- readFile' "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero
-  let cura = H.cura hero
+  let updatedFicha = H.usarHabilidade hero 50
+  let updatedHero = H.updateFicha hero updatedFicha
+  let cura = H.cura updatedHero
   writeFile "src/database/Hero.txt" ( show cura )
   
   putStrLn "------ ------"
@@ -172,6 +216,14 @@ fimDeBatalha = do
 
 invalidClass = do
   putStrLn "Eu posso utilizar as seguintes habilidades..."
+  acao
+
+insuficienteMana = do
+  putStrLn "Você não possui mana suficiente para utilizar essa habilidade!"
+  acao
+
+insuficienteStamina = do
+  putStrLn "Você não possui stamina suficiente para utilizar essa habilidade!"
   acao
 
 showEsqueleto = do

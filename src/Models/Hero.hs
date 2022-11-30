@@ -31,3 +31,12 @@ module Models.Hero where
 
   cura :: Hero -> Hero
   cura hero = Hero (nome hero) (classe hero) (Models.Ficha.cura (ficha hero) (classe hero))
+
+  getMana :: Hero -> Int
+  getMana hero = Models.Ficha.getMana (ficha hero)
+
+  getStamina :: Hero -> Int
+  getStamina hero = Models.Ficha.getStamina (ficha hero)
+
+  usarHabilidade :: Hero -> Int -> Ficha
+  usarHabilidade hero qtd = Models.Ficha.usarHabilidade (ficha hero) qtd (classe hero)
