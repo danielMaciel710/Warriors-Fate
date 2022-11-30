@@ -13,6 +13,8 @@ module Models.Ficha where
     arma:: [String],
     pocao:: Int
   } deriving (Show, Read)
+  
+  getVida :: Ficha -> Int
   getVida ficha = vida ficha
 
   getForca :: Ficha -> Int
@@ -52,3 +54,7 @@ module Models.Ficha where
   damage ficha dano = if (dano > (armadura ficha)) then 
       Ficha ((vida ficha) - (dano - (armadura ficha))) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
     else ficha
+
+  reset :: Ficha -> String -> Ficha
+  reset ficha classe = if classe == "Guerreiro" then Ficha (30) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (mana ficha) (defesa ficha) (100) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)
+    else Ficha (30) (forca ficha) (destreza ficha) (constituicao ficha) (inteligencia ficha) (100) (defesa ficha) (stamina ficha) (experiencia ficha) (armadura ficha) (arma ficha) (pocao ficha)

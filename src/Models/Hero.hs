@@ -8,13 +8,25 @@ module Models.Hero where
 
   } deriving (Show, Read)
 
+  getNome :: Hero -> String
   getNome hero = nome hero
+
+  getClasse :: Hero -> String
   getClasse hero = classe hero
+
+  getFicha :: Hero -> Ficha
   getFicha hero = ficha hero
+
+  getVida :: Hero -> Int
   getVida hero = Models.Ficha.getVida (ficha hero)
+
+  getForca :: Hero -> Int
   getForca hero = Models.Ficha.getForca (ficha hero)
+
+  getInteligencia :: Hero -> Int
   getInteligencia hero = Models.Ficha.getInteligencia (ficha hero)
   
+  updateFicha :: Hero -> Ficha -> Hero
   updateFicha hero ficha = Hero (nome hero) (classe hero) ficha
   
   ataqueFisico :: Hero -> Int
@@ -40,3 +52,6 @@ module Models.Hero where
 
   usarHabilidade :: Hero -> Int -> Ficha
   usarHabilidade hero qtd = Models.Ficha.usarHabilidade (ficha hero) qtd (classe hero)
+
+  reset :: Hero -> Hero
+  reset hero = Hero (nome hero) (classe hero) (Models.Ficha.reset (ficha hero) (classe hero))
