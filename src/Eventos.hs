@@ -36,7 +36,7 @@ caminho1 perigo nome = do
   if perigo + 1 > 2
   then do 
     batalha1
-    checkHero     
+    checkHero2     
   else print "Nenhum inimigo a vista"
   continuar
   evento2 acao perigo nome
@@ -64,7 +64,7 @@ caminho1_2 perigo = do
   if perigo + 2 > 2
   then do 
     batalha1
-    checkHero
+    checkHero2
   else print "Nenhum inimigo a vista"
   continuar
   putStrLn (formataText "Você avança para próxima área"  )
@@ -77,7 +77,7 @@ caminho2 perigo nome = do
   if perigo + 1 > 2
   then do 
     batalha1
-    checkHero 
+    checkHero2 
   else print "Nenhum inimigo a vista"
   continuar
   evento3 acao perigo nome
@@ -109,12 +109,12 @@ caminho2_2 nome = do
   putStrLn (formataText "O esqueleto começa a se mover"  )
   continuar
   batalha1
-  checkHero 
+  checkHero2 
 
   putStrLn (nome ++ ": Hmm, está na hora de eu ir até aquela luz!")
 
 
-checkHero = do
+checkHero2 = do
   arquivo_hero <- readFile' "src/database/Hero.txt"
   let hero = read arquivo_hero :: H.Hero
   let vida = H.getVida hero
@@ -125,4 +125,4 @@ checkHero = do
     putStrLn "Ir em frente, direita ou esqueda?"
     acao <- getLine
     eventos acao 3 (H.getNome hero)
-  else putStrLn "Você ganhou a batalha!"
+  else putStrLn ""
