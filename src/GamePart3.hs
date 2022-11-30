@@ -19,7 +19,7 @@ height = fst terminalSize -- pega a altura do terminal
 width = snd terminalSize -- pega a largura do terminal
 
 part3 = do
-  putStrLn (centerTextHeight2 "Com uma quantidade de força considerável, você abre o portão e se depara com um grande receptáculo que parecia guardar uma chama intensa, três cavaleiros estavam a frente desse receptáculo, estes que não pareciam humanos, pois suas armaduras e pele eram como sombras. Atrás desse grande receptáculo que ardia em chamas, um ser estava sentado num pequeno monte. Ele olhava tranquilo e imponente enquanto permanecia sentado, sua aparência era como de um dragão num corpo de humano, era verde escuro, suas escamas brilhavam refletindo as chamas.\nEntão os 3 cavaleiros vão em sua direção, prepare-se!" height2)
+  putStrLn (centerTextHeight2 "Com uma quantidade de força considerável, você abre o portão e se depara com um grande receptáculo que parecia guardar uma chama intensa, três cavaleiros estavam a frente desse receptáculo, estes que não pareciam humanos, pois suas armaduras e pele eram como sombras. Atrás desse grande receptáculo que ardia em chamas, um ser estava sentado num pequeno monte. Ele olhava tranquilo e imponente enquanto permanecia sentado, sua aparência era como de um dragão num corpo de humano, era verde escuro, suas escamas brilhavam refletindo as chamas.\nEntão os 3 cavaleiros vão em sua direção, prepare-se!" height)
   continuar
   batalhaPart3
 

@@ -3,11 +3,11 @@ module Batalha
       batalha1
     )
 where
-import Lib
 import qualified Models.Hero as H
 import qualified Models.Esqueleto as E
 import qualified Models.Ficha as F
 import System.IO
+import Lib
 
 batalha1 = do
   let reset = E.reset
@@ -159,15 +159,7 @@ ataqueEsqueleto = do
   putStrLn $ "O esqueleto te ataca dando " ++ (show dano) ++ " de dano"
   showFicha
   putStrLn "------ ------"
-  checkHero
   
-checkHero = do
-  arquivo_hero <- readFile "src/database/Hero.txt" 
-  let hero = read arquivo_hero :: H.Hero
-  let vida = H.getVida hero
-  if vida <= 0 then gameOver
-  else turnoHero
-
 checkEsqueleto = do
   arquivo_esqueleto <- readFile "src/database/Esqueleto.txt"
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto

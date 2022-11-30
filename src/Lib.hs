@@ -7,7 +7,7 @@ module Lib
         strip,
         lowerCase,
         gameOver,
-        showFicha
+        showFicha,
         continuar,
         batalha
     ) where
@@ -54,7 +54,7 @@ lowerCase = map toLower
 gameOver = do
   putStrLn "GAME OVER"
   putStrLn "Your fate were determined... You are dead."
-
+  
 showFicha = do 
   arquivo_hero <- readFile' "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero

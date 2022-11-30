@@ -8,6 +8,11 @@ import Lib
 import Terminal
 import System.IO
 import System.IO.Unsafe (unsafeDupablePerformIO)
+import qualified Models.Hero as H
+import qualified Models.Esqueleto as E
+import qualified Models.Ficha as F
+import Batalha
+import Lib
 
 -- retorna as dimensões do terminal em uma tupla
 terminalSize = unsafeDupablePerformIO Terminal.getTermSize
@@ -34,8 +39,10 @@ caminho1 perigo nome = do
   putStrLn (centerText "Você se aproxima da saída..." height width)
   putStrLn "Ir em frente ou voltar?"
   acao <- getLine
-  if perigo > 2
-  then putStrLn (centerText batalha height width) -- Falta implementar batalha 
+  if perigo + 1 > 2
+  then do 
+    batalha1
+    checkHero     
   else print "Nenhum inimigo a vista"
   continuar
   evento2 acao perigo nome
@@ -61,7 +68,9 @@ caminho1_2 perigo = do
   putStrLn "Aperte qualquer tecla para continuar"
   acao <- getLine
   if perigo + 2 > 2
-  then putStrLn (centerText batalha height width)
+  then do 
+    batalha1
+    checkHero
   else print "Nenhum inimigo a vista"
   continuar
   putStrLn (centerText "Você avança para próxima área" height width)
@@ -71,8 +80,10 @@ caminho2 perigo nome = do
   putStrLn (centerTextHeight2 "Você vê um esqueleto no chão com uma espada bem velha, e ao seu lado tem um pedestal antigo com alguma coisa escrita." height)
   putStrLn "O que eu devo fazer agora?"
   acao <- getLine
-  if perigo > 2
-  then putStrLn (centerText batalha height width)
+  if perigo + 1 > 2
+  then do 
+    batalha1
+    checkHero 
   else print "Nenhum inimigo a vista"
   continuar
   evento3 acao perigo nome
@@ -103,5 +114,21 @@ caminho2_2 nome = do
 
   putStrLn (centerText "O esqueleto começa a se mover" height width)
   continuar
-  putStrLn (centerText batalha height width)
+  batalha1
+  checkHero 
+
   putStrLn (nome ++ ": Hmm, está na hora de eu ir até aquela luz!")
+
+
+checkHero = do
+  arquivo_hero <- readFile "src/database/Hero.txt"
+  let hero = read arquivo_hero :: H.Hero
+  let vida = H.getVida hero
+  if vida <= 0 
+  then do
+    gameOver
+    putStrLn ("Ao andar pela escuridão em direção a luz, algumas tochas se ascendem, revelando o local. O cenário era como uma caverna típica, porém havia um grande abismo a esquerda um caminho pela frente e um caminho a direita. A luz que te guiou foi em direção ao caminho a sua frente.")
+    putStrLn "Ir em frente, direita ou esqueda?"
+    acao <- getLine
+    eventos acao 3 (H.getNome hero)
+  else putStrLn "Você ganhou a batalha!"

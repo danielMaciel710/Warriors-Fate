@@ -34,7 +34,7 @@ library
       Lib
       Models.Esqueleto
       Models.Ficha
-      Models.Her
+      Models.Hero
       StartGame
       Terminal
   other-modules:

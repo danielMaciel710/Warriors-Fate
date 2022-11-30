@@ -12,11 +12,11 @@ import Models.Ficha
 --import Terminal
 import System.IO
 import System.IO.Unsafe (unsafeDupablePerformIO)
-
--- retorna as dimensões do terminal em uma tupla
---terminalSize = unsafeDupablePerformIO Terminal.getTermSize
---height = fst terminalSize -- pega a altura do terminal
---width = snd terminalSize -- pega a largura do terminal
+import GamePart1
+import GamePart2
+import GamePart3
+import Eventos
+import Eventos2
 
 initial = do
   choosePath
@@ -39,27 +39,37 @@ showHelp = do
 
 startGame = do
   chooseClass
+  arquivo_hero <- readFile "src/database/Hero.txt"
+  let hero = read arquivo_hero :: H.Hero
+  let nome = H.getNome hero
+
+  putStrLn (" \n Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: \n ")
+  continuar
+  part1 3 nome
+  part2 nome
+  part3
 
 chooseClass = do
-  putStrLn (centerTextHeight2 ("Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros em um momento específico de sua jornada eram atraídos para uma misteriosa caverna, esta que prometia à aqueles que superassem seus desafios um imenso poder...") height)
-  putStrLn "Aperte qualquer tecla para continuar: "
+  putStrLn " \n Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros em um momento específico de sua jornada eram atraídos para uma misteriosa caverna, esta que prometia à aqueles que superassem seus desafios um imenso poder..." 
+  putStrLn " \n Aperte qualquer tecla para continuar: \n"
   token <- getLine
-  putStrLn (centerText ("Escolha sua classe: \n Guerreiro ou Mago?") height width)
+  putStrLn "Escolha sua classe: \n Guerreiro ou Mago? \n " 
   option <- getLine
   if (lowerCase $ strip option) == "mago" then magoPath 
   else if (lowerCase $ strip option) == "guerreiro" then warriorPath
-    else invalidClass
+  else invalidClass
 
 magoPath = do
-  putStrLn ("Digite o seu nome: ")
+  putStrLn (" \n Digite o seu nome: \n ")
   nome <- getLine
   content_ficha <- readFile "src/database/fichaMage.txt"
   let atributos = read content_ficha :: Ficha
   let hero = H.Hero (strip nome) "Mago" atributos
   writeFile "src/database/Hero.txt" (show hero)
+    
 
 warriorPath = do
-  putStrLn ("Digite o seu nome: ")
+  putStrLn (" \n Digite o seu nome: \n ")
   nome <- getLine
   content_ficha <- readFile "src/database/fichaWarrior.txt"
   let atributos = read content_ficha :: Ficha
