@@ -9,9 +9,6 @@ import System.IO
 import System.Directory
 import qualified Models.Hero as H
 import Models.Ficha
---import Terminal
-import System.IO
-import System.IO.Unsafe (unsafeDupablePerformIO)
 import GamePart1
 import GamePart2
 import GamePart3
@@ -22,16 +19,18 @@ initial = do
   choosePath
 
 choosePath = do
-  putStrLn ("------ WarriorsFate ------ \n digite \"start\" ou \"help\"")
+  putStrLn (formataText ("------ WarriorsFate ------ \n digite \"start\" ou \"help\""))
+
   option <- getLine
   if (lowerCase $ strip option) == "help" then showHelp
   else if (lowerCase $ strip option) == "start" then startGame
     else invalidPath
 
 showHelp = do
-  putStrLn ("------ Help ------")
-  putStrLn ("Todas as ações do jogador serão através da entrada de palavras ou frases. O jogador poderá se mover, atacar, usar itens, habilidades específicas e interagir com o cenário de forma bem simples.\n\nUma parte de tela sempre mostrará uma ficha com os itens e atributos do personagem, enquanto outra, descreverá os acontecimentos da história.")
-  putStrLn ("------  ------ \n digite \"voltar\" ou \"sair\"")
+  putStrLn (formataText ("------ Help ------")  )
+  putStrLn (formataText("Todas as ações do jogador serão através da entrada de palavras ou frases. O jogador poderá se mover, atacar, usar itens, habilidades específicas e interagir com o cenário de forma bem simples.\n\nUma parte de tela sempre mostrará uma ficha com os itens e atributos do personagem, enquanto outra, descreverá os acontecimentos da história.") )
+  putStrLn (formataText("------  ------ \n digite \"voltar\" ou \"sair\"")  )
+
   option <- getLine
   if (lowerCase $ strip option) == "voltar" then choosePath
   else if (lowerCase $ strip option) == "sair" then exit
@@ -50,17 +49,19 @@ startGame = do
   part3
 
 chooseClass = do
-  putStrLn " \n Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros em um momento específico de sua jornada eram atraídos para uma misteriosa caverna, esta que prometia à aqueles que superassem seus desafios um imenso poder..." 
-  putStrLn " \n Aperte qualquer tecla para continuar: \n"
+  putStrLn (formataText("Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros em um momento específico de sua jornada eram atraídos para uma misteriosa caverna, esta que prometia à aqueles que superassem seus desafios um imenso poder..."))
+  putStrLn "Aperte qualquer tecla para continuar: "
   token <- getLine
-  putStrLn "Escolha sua classe: \n Guerreiro ou Mago? \n " 
+  putStrLn (formataText ("Escolha sua classe: \n Guerreiro ou Mago?"))
+
   option <- getLine
   if (lowerCase $ strip option) == "mago" then magoPath 
   else if (lowerCase $ strip option) == "guerreiro" then warriorPath
   else invalidClass
 
 magoPath = do
-  putStrLn (" \n Digite o seu nome: \n ")
+  putStrLn (formataText ("Digite o seu nome: "))
+
   nome <- getLine
   content_ficha <- readFile "src/database/fichaMage.txt"
   let atributos = read content_ficha :: Ficha
@@ -69,7 +70,8 @@ magoPath = do
     
 
 warriorPath = do
-  putStrLn (" \n Digite o seu nome: \n ")
+  putStrLn (formataText ("Digite o seu nome: "))
+
   nome <- getLine
   content_ficha <- readFile "src/database/fichaWarrior.txt"
   let atributos = read content_ficha :: Ficha
@@ -77,21 +79,21 @@ warriorPath = do
   writeFile "src/database/Hero.txt" (show hero)
 
 invalidPath = do
-  putStrLn ("Invalid entry!")
+  putStrLn (formataText ("Invalid entry!")  )
   choosePath
     
 invalidClass = do
-  putStrLn ("Invalid entry!")
+  putStrLn (formataText ("Invalid entry!")  )
   chooseClass
 
 invalidNameWarrior = do
-  putStrLn ("Invalid name: Null")
+  putStrLn (formataText ("Invalid name: Null")  )
   warriorPath
 
 invalidNameMago = do
-  putStrLn ("Invalid name: Null")
+  putStrLn (formataText ("Invalid name: Null")  )
   magoPath
 
 exit = do
-  putStrLn ("------  ------ \n Encerrando...")
-  putStrLn ("------  ------ ")
+  putStrLn (formataText ("------  ------ \n Encerrando...")  )
+  putStrLn (formataText ("------  ------ ")  )

@@ -9,33 +9,29 @@ import System.IO
 import System.Directory
 import qualified Models.Hero as H
 import Models.Ficha
-import Terminal
 import System.IO
 import System.IO.Unsafe (unsafeDupablePerformIO)
 
--- retorna as dimensões do terminal em uma tupla
-terminalSize = unsafeDupablePerformIO Terminal.getTermSize
-height = fst terminalSize -- pega a altura do terminal
-width = snd terminalSize -- pega a largura do terminal
-
 part3 = do
-  putStrLn (centerTextHeight2 "Com uma quantidade de força considerável, você abre o portão e se depara com um grande receptáculo que parecia guardar uma chama intensa, três cavaleiros estavam a frente desse receptáculo, estes que não pareciam humanos, pois suas armaduras e pele eram como sombras. Atrás desse grande receptáculo que ardia em chamas, um ser estava sentado num pequeno monte. Ele olhava tranquilo e imponente enquanto permanecia sentado, sua aparência era como de um dragão num corpo de humano, era verde escuro, suas escamas brilhavam refletindo as chamas.\nEntão os 3 cavaleiros vão em sua direção, prepare-se!" height)
+
+  putStrLn (formataText "Com uma quantidade de força considerável, você abre o portão e se depara com um grande receptáculo que parecia guardar uma chama intensa, três cavaleiros estavam a frente desse receptáculo, estes que não pareciam humanos, pois suas armaduras e pele eram como sombras. Atrás desse grande receptáculo que ardia em chamas, um ser estava sentado num pequeno monte. Ele olhava tranquilo e imponente enquanto permanecia sentado, sua aparência era como de um dragão num corpo de humano, era verde escuro, suas escamas brilhavam refletindo as chamas.\nEntão os 3 cavaleiros vão em sua direção, prepare-se!")
+
   continuar
   batalhaPart3
 
-  putStrLn (centerText "???: Ha ha ha!" height width) 
+  putStrLn (formataText "???: Ha ha ha!"  ) 
   continuar
-  putStrLn (centerText "???: Você foi bem, pequeno humano" height width) 
+  putStrLn (formataText "???: Você foi bem, pequeno humano"  ) 
   continuar
-  putStrLn (centerText "???: A partir daqui a jornada ficará cada vez mais difícil" height width) 
+  putStrLn (formataText "???: A partir daqui a jornada ficará cada vez mais difícil"  ) 
   continuar
-  putStrLn (centerText "???: Seu destino irá mudar, poderá sair daqui com a benção divina ou com a maldição dos demônios" height width) 
+  putStrLn (formataText "???: Seu destino irá mudar, poderá sair daqui com a benção divina ou com a maldição dos demônios"  ) 
   continuar
-  putStrLn (centerText "???: No final, você escolherá seu destino, então siga em frente" height width) 
+  putStrLn (formataText "???: No final, você escolherá seu destino, então siga em frente"  ) 
   continuar
-  putStrLn (centerText "???: O verdadeiro desafio começa agora!" height width) 
+  putStrLn (formataText "???: O verdadeiro desafio começa agora!"  ) 
   continuar
 
-  putStrLn (centerText "Continua..." height width) 
+  putStrLn (formataText "Continua..."  ) 
 
-batalhaPart3 = putStrLn (centerText "Uma grande batalha está sendo travada!" height width)
+batalhaPart3 = putStrLn (formataText "Uma grande batalha está sendo travada!"  )

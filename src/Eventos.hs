@@ -5,7 +5,6 @@ module Eventos
 where
 
 import Lib
-import Terminal
 import System.IO
 import System.IO.Unsafe (unsafeDupablePerformIO)
 import qualified Models.Hero as H
@@ -14,11 +13,6 @@ import qualified Models.Ficha as F
 import Batalha
 import Lib
 
--- retorna as dimensões do terminal em uma tupla
-terminalSize = unsafeDupablePerformIO Terminal.getTermSize
-height = fst terminalSize -- pega a altura do terminal
-width = snd terminalSize -- pega a largura do terminal
-
 eventos :: String -> Int -> String -> IO ()
 eventos acao perigo nome = if (lowerCase acao) == "frente"
   then caminho1 perigo nome
@@ -26,17 +20,17 @@ eventos acao perigo nome = if (lowerCase acao) == "frente"
   then caminho2 perigo nome
   else if (lowerCase acao) == "esquerda"
   then do 
-    putStrLn (centerText "Você vê um abismo sem fim, melhor seguir em frente..." height width)
+    putStrLn (formataText "Você vê um abismo sem fim, melhor seguir em frente..."  )
     continuar -- Função que printa uma mensagem e espera uma entrada qualquer, só para o jogador ler o que tá na tela.
     caminho1 perigo nome
   else do
-    putStrLn (centerText (nome ++ ": Posso ir para *frente*, *direita* ou *esquerda*") height width)
+    putStrLn (formataText (nome ++ ": Posso ir para *frente*, *direita* ou *esquerda*")  )
     acao <- getLine
     eventos acao perigo nome
 
 caminho1 :: Int -> String -> IO ()
 caminho1 perigo nome = do
-  putStrLn (centerText "Você se aproxima da saída..." height width)
+  putStrLn (formataText "Você se aproxima da saída..."  )
   putStrLn "Ir em frente ou voltar?"
   acao <- getLine
   if perigo + 1 > 2
@@ -54,17 +48,17 @@ evento2 acao perigo nome = if (lowerCase acao) == "frente"
   then caminho2 perigo nome
   else if (lowerCase acao) == "voltar"
   then do
-    putStrLn (centerText "Você volta e segue para direita" height width)
+    putStrLn (formataText "Você volta e segue para direita"  )
     continuar
     caminho2 perigo nome
   else do
-    putStrLn (centerText (nome ++ ": Posso ir para *frente*, *direita*, *voltar*") height width)
+    putStrLn (formataText (nome ++ ": Posso ir para *frente*, *direita*, *voltar*")  )
     acao <- getLine
     evento2 acao perigo nome
 
 caminho1_2 :: Int -> IO ()
 caminho1_2 perigo = do
-  putStrLn (centerText "Você está em frente a saída..." height width)
+  putStrLn (formataText "Você está em frente a saída..."  )
   putStrLn "Aperte qualquer tecla para continuar"
   acao <- getLine
   if perigo + 2 > 2
@@ -73,11 +67,11 @@ caminho1_2 perigo = do
     checkHero
   else print "Nenhum inimigo a vista"
   continuar
-  putStrLn (centerText "Você avança para próxima área" height width)
+  putStrLn (formataText "Você avança para próxima área"  )
 
 caminho2 :: Int -> String -> IO ()
 caminho2 perigo nome = do
-  putStrLn (centerTextHeight2 "Você vê um esqueleto no chão com uma espada bem velha, e ao seu lado tem um pedestal antigo com alguma coisa escrita." height)
+  putStrLn (formataText "Você vê um esqueleto no chão com uma espada bem velha, e ao seu lado tem um pedestal antigo com alguma coisa escrita." )
   putStrLn "O que eu devo fazer agora?"
   acao <- getLine
   if perigo + 1 > 2
@@ -96,23 +90,23 @@ evento3 acao perigo nome = if (lowerCase acao) == "ler pedestal"
   else if (lowerCase acao) == "olhar esqueleto"
   then caminho2_2 nome
   else do
-    putStrLn (centerText (nome ++ ": Posso *ler pedestal*, ou *investigar esqueleto*") height width)
+    putStrLn (formataText (nome ++ ": Posso *ler pedestal*, ou *investigar esqueleto*")  )
     acao <- getLine
     evento3 acao perigo nome
 
 caminho2_1 :: String -> IO ()
 caminho2_1 nome = do
-  putStrLn (centerTextHeight2 "Para aqueles que buscam a verdadeira força: O fim começa agora. O fim mudará conforme o agora. Desvie sua atenção, mas nunca esqueça para onde está indo." height)
+  putStrLn (formataText "Para aqueles que buscam a verdadeira força: O fim começa agora. O fim mudará conforme o agora. Desvie sua atenção, mas nunca esqueça para onde está indo." )
   caminho2_2 nome
 
 caminho2_2 :: String -> IO ()
 caminho2_2 nome = do
-  putStrLn (centerText "Você encontra uma poção de cura!" height width)
+  putStrLn (formataText "Você encontra uma poção de cura!"  )
   let addPocao = "Foi adicionado uma poção ao seu inventário" -- Só para testar aplicação, esta deve ser uma função de Lib.hs 
   putStrLn addPocao
   continuar
 
-  putStrLn (centerText "O esqueleto começa a se mover" height width)
+  putStrLn (formataText "O esqueleto começa a se mover"  )
   continuar
   batalha1
   checkHero 
