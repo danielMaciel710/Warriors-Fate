@@ -72,7 +72,7 @@ caminho1_2 perigo = do
 caminho2 :: Int -> String -> IO ()
 caminho2 perigo nome = do
   putStrLn (formataText "Você vê um esqueleto no chão com uma espada bem velha, e ao seu lado tem um pedestal antigo com alguma coisa escrita." )
-  putStrLn "O que eu devo fazer agora?"
+  continuar
   acao <- getLine
   if perigo + 1 > 2
   then do 
