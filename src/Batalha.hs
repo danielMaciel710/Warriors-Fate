@@ -51,8 +51,71 @@ acao = do
   option <- getLine
   if (lowerCase $ strip option) == "ataque fisico" then ataqueFisico
   else if (lowerCase $ strip option) == "ataque magico" then ataqueMagico
-  --else if (lowerCase $ strip option) == "habilidade" then habilidade
+  else if (lowerCase $ strip option) == "habilidade" then habilidade
   else invalidClass
+
+habilidade = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  if (H.getClasse hero == "Guerreiro") then habilidadeWarrior
+  else habilidadeMago
+
+habilidadeWarrior = do
+  putStrLn "Você possui as seguintes habilidades:"
+  putStrLn "1: Golpe Concentrado (20) 2: Golpe Giratório (30) 3: Cura (50)"
+  option <- getLine
+  if (lowerCase $ strip option) == "1" then habilidadeUm 
+  else if (lowerCase $ strip option) == "2" then habilidadeDois
+  else if (lowerCase $ strip option) == "3" then habilidadeTres
+  else invalidClass
+
+habilidadeMago = do
+  putStrLn "Você possui as seguintes habilidades:"
+  putStrLn "1: Raio de Gelo (20) 2: Bola de Fogo (30) 3: Cura (50)"
+  option <- getLine
+  if (lowerCase $ strip option) == "1" then habilidadeUm 
+  else if (lowerCase $ strip option) == "2" then habilidadeDois
+  else if (lowerCase $ strip option) == "3" then habilidadeTres
+  else invalidClass
+
+habilidadeUm = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
+  let esqueleto = read arquivo_esqueleto :: E.Esqueleto
+  let dano = H.danoConcentrado hero
+  let darDano = E.damage esqueleto dano
+  writeFile "src/database/Esqueleto.txt" ( show darDano )
+  
+  putStrLn "------ ------"
+  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  showEsqueleto
+  putStrLn "------ ------"
+
+habilidadeDois = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
+  let esqueleto = read arquivo_esqueleto :: E.Esqueleto
+  let dano = H.danoArea hero
+  let darDano = E.damage esqueleto dano
+  writeFile "src/database/Esqueleto.txt" ( show darDano )
+  
+  putStrLn "------ ------"
+  putStrLn $ "Você ataca dando " ++ (show dano) ++ " de dano no esqueleto!"
+  showEsqueleto
+  putStrLn "------ ------"
+
+habilidadeTres = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  let cura = H.cura hero
+  writeFile "src/database/Hero.txt" ( show cura )
+  
+  putStrLn "------ ------"
+  putStrLn $ "Você se cura!"
+  showEsqueleto
+  putStrLn "------ ------"
 
 ataqueFisico:: IO()
 ataqueFisico = do
@@ -99,7 +162,6 @@ ataqueEsqueleto = do
   putStrLn "------ ------"
   checkHero
   
-
 checkHero = do
   arquivo_hero <- readFile "src/database/Hero.txt" 
   let hero = read arquivo_hero :: H.Hero
@@ -116,7 +178,6 @@ checkEsqueleto = do
 
 fimDeBatalha = do
   putStrLn "You won the battle!"
-
 
 invalidClass = do
   putStrLn "Eu posso utilizar as seguintes habilidades..."

@@ -22,3 +22,12 @@ module Models.Hero where
 
   ataqueMagico :: Hero -> Int
   ataqueMagico hero = Models.Hero.getInteligencia hero + Models.Ficha.getArmaDanoMagico (ficha hero)
+
+  danoConcentrado :: Hero -> Int
+  danoConcentrado hero = Models.Ficha.danoConcentrado (ficha hero) (classe hero)
+
+  danoArea :: Hero -> Int
+  danoArea hero = Models.Ficha.danoArea (ficha hero) (classe hero)
+
+  cura :: Hero -> Hero
+  cura hero = Hero (nome hero) (classe hero) (Models.Ficha.cura (ficha hero) (classe hero))
