@@ -6,7 +6,6 @@ where
 
 import Lib
 import System.IO
-import System.IO.Unsafe (unsafeDupablePerformIO)
 
 eventos2 :: String -> String -> IO ()
 eventos2 acao nome = if (lowerCase acao) == "frente"
@@ -16,7 +15,9 @@ eventos2 acao nome = if (lowerCase acao) == "frente"
   else if (lowerCase acao) == "esquerda"
   then do
     putStrLn (formataText "Ao seguir esse caminho, de alguma forma você volta para entrada..."  )
-    putStrLn (nome ++ ": Falta testar esquerda e a direita...")
+    putStrLn (nome ++ ": Preciso tentar um caminho diferente...")
+    continuar
+    putStrLn ("\n" ++ nome ++ ": Posso ir para *frente*, *direita* ou *esquerda*")
     acao <- getLine
     eventos2 acao nome
   else do
@@ -36,6 +37,7 @@ evento2 acao nome = if (lowerCase acao) == "esquerda"
    then do
     putStrLn (formataText "Ao seguir esse caminho, de alguma forma você volta para entrada..."  )
     putStrLn (nome ++ ": Hmm, preciso tentar um caminho diferente...")
+    continuar
     putStrLn ("\n" ++ nome ++ ": Posso ir para *frente*, *direita* ou *esquerda*")
     acao <- getLine
     eventos2 acao nome
@@ -76,6 +78,7 @@ evento3 acao nome = if (lowerCase acao) == "frente"
     putStrLn addPocao
     continuar
     putStrLn (formataText "Você avista um grande portão adornado que se destaca completamente no cenário."  )
+    continuar
   else do
     putStrLn (formataText (nome ++ ": Posso ir para *frente*, *direita* ou *esquerda*")  )
     acao <- getLine
@@ -84,7 +87,7 @@ evento3 acao nome = if (lowerCase acao) == "frente"
 caminho2 :: String -> IO ()
 caminho2 nome = do
   putStrLn (formataText "Você continua em frente até encontrar dois caminhos"  )
-  putStrLn "Ir pela esquerda ou direita?"
+  putStrLn "Ir pela *esquerda* ou *direita*?"
   acao <- getLine
   evento4 acao nome
 
@@ -94,14 +97,15 @@ evento4 acao nome = if (lowerCase acao) == "direita"
    then do
     putStrLn (formataText "Ao seguir esse caminho, de alguma forma você volta para entrada..."  )
     putStrLn (nome ++ ": Hmm, preciso tentar um caminho diferente...")
+    continuar
     putStrLn ("\n" ++ nome ++ ": Posso ir para *frente*, *direita* ou *esquerda*")
     acao <- getLine
     eventos2 acao nome
   else if (lowerCase acao) == "esquerda"
-  then putStrLn (formataText "Você avista um grande portão adornado que se destaca completamente no cenário."  )
+  then do
+    putStrLn (formataText "Você avista um grande portão adornado que se destaca completamente no cenário."  )
+    continuar
   else do
     putStrLn (formataText (nome ++ ": Posso ir para *direita* ou *esquerda*")  )
     acao <- getLine
     evento2 acao nome
-
-

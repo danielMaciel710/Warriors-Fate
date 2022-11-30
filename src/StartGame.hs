@@ -19,7 +19,7 @@ initial = do
   choosePath
 
 choosePath = do
-  putStrLn (formataText ("------ WarriorsFate ------ \n digite \"start\" ou \"help\""))
+  putStrLn (formataText ("      WarriorsFate\ndigite *start* ou *help*"))
 
   option <- getLine
   if (lowerCase $ strip option) == "help" then showHelp
@@ -27,9 +27,9 @@ choosePath = do
     else invalidPath
 
 showHelp = do
-  putStrLn (formataText ("------ Help ------")  )
-  putStrLn (formataText("Todas as ações do jogador serão através da entrada de palavras ou frases. O jogador poderá se mover, atacar, usar itens, habilidades específicas e interagir com o cenário de forma bem simples.\n\nUma parte de tela sempre mostrará uma ficha com os itens e atributos do personagem, enquanto outra, descreverá os acontecimentos da história.") )
-  putStrLn (formataText("------  ------ \n digite \"voltar\" ou \"sair\"")  )
+  putStrLn (formataText ("Help")  )
+  putStrLn (formataText("Todas as ações do jogador serão através da entrada de palavras ou frases. O jogador poderá se mover, atacar, usar habilidades específicas e interagir com o cenário de forma bem simples.\n\nNas batalhas aparecerá os valores dos atributos do inimigo ou do jogador dependendo se ele usou uma habilidade ou o inimigo tenha usado.\n\nPara uma melhor experiência do jogo, ajuste a tela apertando (Ctrl + Shift + ) ou (Ctrl - ) até os traços que dividem o texto preencherem totalmente a tela sem passar para linha de baixo") )
+  putStrLn (formataText("digite *voltar* ou *sair*"))
 
   option <- getLine
   if (lowerCase $ strip option) == "voltar" then choosePath
@@ -42,7 +42,7 @@ startGame = do
   let hero = read arquivo_hero :: H.Hero
   let nome = H.getNome hero
 
-  putStrLn (" \n Você cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente: \n ")
+  putStrLn (formataText (nome ++ " cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:"))
   continuar
   part1 3 nome
   part2 nome
@@ -52,7 +52,7 @@ chooseClass = do
   putStrLn (formataText("Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros em um momento específico de sua jornada eram atraídos para uma misteriosa caverna, esta que prometia à aqueles que superassem seus desafios um imenso poder..."))
   putStrLn "Aperte qualquer tecla para continuar: "
   token <- getLine
-  putStrLn (formataText ("Escolha sua classe: \n Guerreiro ou Mago?"))
+  putStrLn (formataText ("Escolha sua classe: \nGuerreiro ou Mago?"))
 
   option <- getLine
   if (lowerCase $ strip option) == "mago" then magoPath 
@@ -95,5 +95,4 @@ invalidNameMago = do
   magoPath
 
 exit = do
-  putStrLn (formataText ("------  ------ \n Encerrando...")  )
-  putStrLn (formataText ("------  ------ ")  )
+  putStrLn (formataText "Encerrando...")
