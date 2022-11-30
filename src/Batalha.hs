@@ -15,7 +15,10 @@ batalha1 = do
   putStrLn (formataText "PREPARE-SE, ALGUÉM SE APROXIMA!!!")
   showEsqueleto
   putStrLn "Selecione uma ação:"
-  turnoHero
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  if H.getVida hero <= 0 then resetHero
+  else turnoHero
 
 turnoHero = do  
   acao
@@ -226,3 +229,10 @@ showEsqueleto = do
   arquivo_esqueleto <- readFile' "src/database/Esqueleto.txt"
   let esqueleto = read arquivo_esqueleto :: E.Esqueleto
   putStrLn $ (formataText ("Esqueleto:\nVida: " ++ (show $ E.vida esqueleto) ++ "\nArmadura: " ++ (show $ E.armadura esqueleto)))
+
+resetHero = do
+  arquivo_hero <- readFile' "src/database/Hero.txt" 
+  let hero = read arquivo_hero :: H.Hero
+  let updatedHero = H.reset hero
+  writeFile "src/database/Hero.txt" ( show updatedHero )
+  turnoHero
