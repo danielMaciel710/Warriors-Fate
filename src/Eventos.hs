@@ -44,7 +44,10 @@ evento2 :: String -> Int -> String -> IO ()
 evento2 acao perigo nome = if (lowerCase acao) == "frente"
   then caminho1_2 perigo nome
   else if (lowerCase acao) == "direita"
-  then caminho2 perigo nome
+  then do
+    putStrLn (formataText "Você volta e segue para direita")
+    continuar
+    caminho2 perigo nome
   else if (lowerCase acao) == "voltar"
   then do
     putStrLn (formataText "Você volta e segue para direita")
@@ -64,18 +67,20 @@ caminho1_2 perigo nome = do
     batalha1
     checkHero2
   else putStrLn (nome ++ ": Estranho, achei que teria algum inimigo aqui...")
+
   continuar
-  putStrLn (formataText "Você avança para próxima área"  )
+  putStrLn (formataText "Você avança para próxima área")
 
 caminho2 :: Int -> String -> IO ()
 caminho2 perigo nome = do
   putStrLn (formataText "Você vê um esqueleto no chão com uma espada bem velha, e ao seu lado tem um pedestal antigo com alguma coisa escrita.")
   continuar
   if perigo + 1 > 2
-  then do 
+  then do
     batalha1
     checkHero2 
-  else putStrLn ""
+  else putStrLn "" 
+
   putStrLn (nome ++ ": Eu deveria *ler pedestal*, *investigar esqueleto* ou *ir para luz* ???")
   acao <- getLine
   evento3 acao perigo nome
@@ -106,7 +111,7 @@ caminho2_2 perigo nome = do
   checkHero2 
   putStrLn (formataText "Você encontra uma poção de cura!"  )
   let addPocao = (formataText "Você bebe a poção e se sente revigorado!")
-  --Colocar aqui função pra resetar status do jogador
+  resetHeroPocao
   putStrLn addPocao
   continuar
   putStrLn (nome ++ ": Hmm, está na hora de eu ir até aquela luz!")
@@ -125,5 +130,6 @@ checkHero2 = do
     putStrLn (formataText "Ao andar pela escuridão em direção a luz, algumas tochas se ascendem, revelando o local. O cenário era como uma caverna típica, porém havia um grande abismo a esquerda um caminho pela frente e um caminho a direita. A luz que te guiou foi em direção ao caminho a sua frente.")
     putStrLn "Ir em *frente*, *direita* ou *esquerda*?"
     acao <- getLine
+    resetHeroPocao
     eventos acao (read dificuldade) (H.getNome hero)
   else putStrLn ""
