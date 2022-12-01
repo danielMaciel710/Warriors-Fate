@@ -73,9 +73,10 @@ evento3 acao nome = if (lowerCase acao) == "frente"
       eventos2 acao nome
   else if (lowerCase acao) == "esquerda"
   then do
-    putStrLn (formataText "Você encontra uma poção de cura!"  )
-    let addPocao = "Foi adicionado uma poção ao seu inventário" -- Só para testar aplicação, esta deve ser uma função de Lib.hs 
-    putStrLn addPocao
+    putStrLn (formataText "Você encontra uma poção de cura!")
+    let addPocao = "Você toma a poção e se sente revigorado!"
+    putStrLn (formataText addPocao)
+    resetHeroPocao
     continuar
     putStrLn (formataText "Você avista um grande portão adornado que se destaca completamente no cenário."  )
     continuar

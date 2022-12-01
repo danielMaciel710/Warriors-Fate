@@ -5,7 +5,8 @@ module Lib
         lowerCase,
         gameOver,
         showFicha,
-        continuar
+        continuar,
+        resetHeroPocao
     ) where
 
 import Data.Char
@@ -36,3 +37,9 @@ continuar = do
   putStrLn "Aperte qualquer tecla para continuar..."
   token <- getLine
   putStrLn ""
+
+resetHeroPocao = do
+  arquivo_hero <- readFile' "src/database/Hero.txt"
+  let hero = read arquivo_hero :: H.Hero
+  let updatedHero = H.reset hero
+  writeFile "src/database/Hero.txt" ( show updatedHero )

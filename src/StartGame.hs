@@ -43,8 +43,9 @@ startGame = do
   let nome = H.getNome hero
 
   putStrLn (formataText (nome ++ " cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:"))
-  continuar
-  part1 3 nome
+  putStrLn (formataText "Selecione a dificuldade:\n0 - Para fácil\n1 - Para médio\n2 - Para difícil")
+  dificuldade <- getLine
+  part1 (read dificuldade) nome
   part2 nome
   part3
 

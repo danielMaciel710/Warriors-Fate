@@ -1,1 +1,1 @@
-Esqueleto {vida = -5, armadura = 10}
+Esqueleto {vida = 0, armadura = 5}
