@@ -12,6 +12,8 @@ Todas as ações do jogador serão através da entrada de palavras ou frases. O 
 * Depois no terminal, dentro da pasta do jogo, execute os seguintes comandos:
 * stack build
 * stack run
+## Ajustes para melhorar a experiência do jogo
+* Ajuste a tela do terminal apertando (Ctrl + Shift + ) ou (Ctrl - ) até os traços que dividem o texto preencherem totalmente a tela sem passar para linha de baixo"
 ## Tutorial para instalação das dependências
 * Rode esse código no terminal e siga os passos que aparecerão. Basta que instale o ghc, cabal e o stack:
 * curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
