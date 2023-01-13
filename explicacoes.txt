@@ -1,3 +1,1 @@
-*Falta fazer as fichas dos inimigos e das duas classes, como também a função de batalha.
-
 *Se a gente fazer as partes que faltam sem muita dificuldade, o plano é fazer os npcs da terceira área, a batalha final.
