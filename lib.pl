@@ -1,7 +1,7 @@
 ler(Opcao):- read_line_to_codes(user_input, R),
-    string_to_atom(R, R1),
-    writeln(R1),
-    downcase_atom(R1, Opcao).
+   string_to_atom(R, R1),
+   writeln(R1),
+   downcase_atom(R1, Opcao).
 
 ler().
 
