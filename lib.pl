@@ -1,16 +1,21 @@
-formataTexto(Texto, TextoFormatado):- 
+ler(Opcao):- read_line_to_codes(user_input, R),
+    string_to_atom(R, R1),
+    writeln(R1),
+    downcase_atom(R1, Opcao).
+
+ler().
+
+text(Texto):- 
    string_concat("\n-------------------------------------------------------------------------------\n", Texto, TextoFormatadoIncompleto),
-   string_concat(TextoFormatadoIncompleto, "\n-------------------------------------------------------------------------------\n", TextoFormatado).
+   string_concat(TextoFormatadoIncompleto, "\n-------------------------------------------------------------------------------\n", TextoFormatado),
+   writeln(TextoFormatado).
 
-gameOver():- 
-   write("Game Over"),
-   write("Your Fate were determined").
+gameOver:- 
+   text("Game Over\nYour Fate were determined").
 
-continuar():-
-   write("Aperte qualquer tecla para continuar..."),
-   read(_),
-   write("").
-
-exit():-
-   formataTexto("Encerrando...", Encerrando),
-   write(Encerrando).
+continuar:-
+   text("Aperte Enter para continuar..."),
+   ler(_).
+   
+exit:-
+   text("Encerrando...").

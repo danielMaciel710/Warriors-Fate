@@ -1,1 +1,3 @@
-start():- initial(), halt.
+:- [gameMenu].
+
+main:- iniciar, halt.
