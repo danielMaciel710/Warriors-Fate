@@ -1,12 +1,8 @@
-invalidClass():-
-   formataTexto("Classe inválida!", EntradaInvalida),
-   write(ClasseInvalida),
-   chooseClass().
-
-startGame():-
-   chooseClass(),
+startGame().
+	%Vou começar a trabalhar nessa classe depois de amanhã.
+   %chooseClass(),
    %Ler arquivo com os dados do personagem e pegar o nome
-   formataTexto(Nome ++ " cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:", Texto1),
+   /*formataTexto(Nome ++ " cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:", Texto1),
    formataTexto("Selecione a dificuldade:\n0 - Para fácil\n1 - Para médio\n2 - Para difícil", Texto2),
    read(Dificuldade),
    part1(Dificuldade, Nome),
@@ -20,6 +16,11 @@ chooseClass():-
    read(Option),
    ((Option =:= "guerreiro") -> warriorPath()),
    ((Option =:= "mago") -> magePath()); invalidClass()).
+
+invalidClass():-
+   formataTexto("Classe inválida!", EntradaInvalida),
+   write(ClasseInvalida),
+   chooseClass().
 
 warriorPath():-
    formataTexto("Digite o seu nome: ", Texto),
@@ -142,4 +143,4 @@ caminho3(Perigo, Nome):-
 	formataTexto("Você vê um abismo sem fim, melhor seguir em frente...", Texto),
 	write(Texto),
 	continuar(),
-	caminho1(Perigo, Nome).
+	caminho1(Perigo, Nome).*/

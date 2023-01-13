@@ -1,27 +1,28 @@
-initial():- choosePath().
+:- [lib],
+   [gamePart1].
 
-choosePath():-
-   write("WarriorsFate\ndigite *start* ou *help*"),
-   read(Option),
-   ((Option =:= "help") -> showHelp()),
-   ((Option =:= "start") -> startGame()); invalidPath()).
+iniciar:- mainMenu.
 
-showHelp():-
-   formataTexto("Help", HelpFormatado),
+mainMenu:-
+   writeln('___  __  ___ _    ____  ____  _  _____  ____   ___      _____  _  _____  _____'),
+   writeln('\\  \\/  \\/  // \\  |    ||    || ||  _  ||    | /___|    |  ___|/ \\|_   _||  ___|'),
+   writeln(' \\   /\\   // _ \\ |    ||    || || |_| ||    ||__  |    |  _| / _ \\ | |  |  ___|'),
+   writeln('  \\_/  \\_//_/ \\_\\|_|\\_\\|_|\\_\\|_||_____||_|\\_\\|___/     |_|  /_/ \\_\\|_|  |_____|'),
+   writeln('\n\nDigite *start* ou *help*.\n\n'),
+   ler(Opcao),
+   selecionar(Opcao).
 
-   formataTexto("Todas as ações do jogador serão através da entrada de palavras ou frases. O jogador poderá se mover, atacar, usar habilidades específicas e interagir com o cenário de forma bem simples.\n\nNas batalhas aparecerá os valores dos atributos do inimigo ou do jogador dependendo se ele usou uma habilidade ou o inimigo tenha usado.\n\nPara uma melhor experiência do jogo, ajuste a tela apertando (Ctrl + Shift + ) ou (Ctrl - ) até os traços que dividem o texto preencherem totalmente a tela sem passar para linha de baixo") )
-  putStrLn (formataText("digite *voltar* ou *sair*", TextoFormatado),
+selecionar(start):- startGame.
 
-   formataTexto("Digite *voltar* ou *sair*", TextoFormatado2),
+selecionar(help):- text('Help'),
+   text('Todas as ações do jogador serão através da entrada de palavras ou frases. O jogador poderá se mover, atacar, usar habilidades específicas e interagir com o cenário de forma bem simples.\n\nNas batalhas aparecerá os valores dos atributos do inimigo ou do jogador dependendo se ele usou uma habilidade ou o inimigo tenha usado.\n\nPara uma melhor experiência do jogo, ajuste a tela apertando (Ctrl + Shift + ) ou (Ctrl - ) até os traços que dividem o texto preencherem totalmente a tela sem passar para linha de baixo'),
+   text('Digite *voltar* ou *sair*'),
+   ler(Opcao),
+   selecionar(Opcao).
 
-   write(HelpFormatado),
-   write(TextoFormatado),
-   write(TextoFormatado2),
-   read(Option),
-   ((Option =:= "voltar") -> choosePath()),
-   ((Option =:= "sair") -> exit()); invalidPath()).
+selecionar(voltar):- mainMenu.
 
-invalidPath():-
-   formataTexto("Entrada inválida!", EntradaInvalida),
-   write(EntradaInvalida),
-   choosePath().
+selecionar(sair):- exit.
+
+selecionar(_):- text('Entrada Inválida'),
+   mainMenu.

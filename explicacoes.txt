@@ -1,13 +1,1 @@
-*Basicamente eu só fiz o grosso, mas até que foi um tanto trabalhoso. Eu fiz algumas "funções" básicas do lib como formatar o texto e fiz a base de acontecimentos de todas as partes que fizemos em Haskell.
-
-*Falta fazer as fichas dos inimigos e das duas classes, como também a função de batalha.
-
-*Eu não testei, então talvez vcs encontrem erros, bom, se precisarem de ajuda pra entender algo ou para fazer alguma coisa, manda mensagem lá no discord que eu tento olhar assim que possível.
-
-*O plano é criar um tipo de inicializável no arquivo warriorsFate.pl.
-
-*Eu não usei uma "função" para deixar a entrada do usuário em minúsculo nas ações, seria bom fazer isso.
-
-*Eu vou focar em estudar pra outras disciplinas nos próximos dias, mas vou estar disponível pra ajudar com o que puder, é só chamar. Depois de cada um pegar uma parte para fazer, eu vejo o que mais posso fazer.
-
-*Se a gente fazer as partes que faltam sem muita dificuldade, o plano é fazer os npcs da terceira área, a batalha final e se der, a gente tenta colocar uma interface mais agradável.
+*Se a gente fazer as partes que faltam sem muita dificuldade, o plano é fazer os npcs da terceira área, a batalha final.
