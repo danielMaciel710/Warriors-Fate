@@ -16,25 +16,21 @@ chooseClass:- text('                 Escolha sua classe: "Guerreiro" ou "Mago"?'
 	ler(Opcao),
 	chooseClass(Opcao).
 
-chooseClass(guerreiro):-
-	class(guerreiro),
+chooseClass(guerreiro):- class(guerreiro),
 	text('                            Digite o seu nome.'),
 	lerNome(Nome),
 	nome(Nome),
 	%Criar ficha da classe Warrior com o Nome passado pelo jogador.
 	text('                          Ficha criada com sucesso.').
 
-chooseClass(mago):-
-	class(mago),
+chooseClass(mago):- class(mago),
 	text('                            Digite o seu nome.'),
 	lerNome(Nome),
 	nome(Nome),
 	%Criar ficha da classe Mage com o Nome passado pelo jogador.
 	text('                          Ficha criada com sucesso.').
 
-chooseClass(_):-
-	text('Classe inválida!'),
-	chooseClass.
+chooseClass(_):- text('Classe inválida!'), chooseClass.
 
 /*
 part1(Perigo, Nome):-
