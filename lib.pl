@@ -1,16 +1,17 @@
-ler(Opcao):- read_line_to_codes(user_input, R),
-   string_to_atom(R, R1),
-   downcase_atom(R1, Opcao).
+ler(Opcao):- read_line_to_codes(user_input, R), string_to_atom(R, R1), downcase_atom(R1, Opcao).
 
 ler().
 
-text(Texto):- string_concat('\n-------------------------------------------------------------------------------\n', R, TextoFormatadoIncompleto),
+lerNome(Nome):- read_line_to_codes(user_input, R), string_to_atom(R, Nome).
+
+text(Texto):-
+   string_concat('\n-------------------------------------------------------------------------------\n', Texto, TextoFormatadoIncompleto),
    string_concat(TextoFormatadoIncompleto, '\n-------------------------------------------------------------------------------\n', TextoFormatado),
    writeln(TextoFormatado).
 
-gameOver:- text('Game Over\nYour Fate were determined').
+fimJogo:- text('                                 Fim de Jogo
+                          Your Fate were determined').
 
-continuar:- text('Aperte Enter para continuar...'),
-   ler(_).
+continuar:- text('                      Aperte "Enter" para continuar...'), ler(_).
    
-exit:- text('Encerrando...').
+sair:- text('                                Encerrando...').
