@@ -1,3 +1,7 @@
+vidaEsqueleto(50). %?
+armaduraEsqueleto(5).
+
+/*
 module Models.Esqueleto where 
 
   data Esqueleto = Esqueleto {

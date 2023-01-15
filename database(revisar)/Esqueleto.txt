@@ -1,1 +1,0 @@
-Esqueleto {vida = 0, armadura = 5}

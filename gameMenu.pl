@@ -1,6 +1,3 @@
-:- [lib],
-   [gamePart1].
-
 iniciar:- mainMenu.
 
 mainMenu:-
@@ -8,7 +5,7 @@ mainMenu:-
    writeln('\\  \\/  \\/  // \\  |    ||    || ||  _  ||    | /___|    |  ___|/ \\|_   _||  ___|'),
    writeln(' \\   /\\   // _ \\ |    ||    || || |_| ||    ||__  |    |  _| / _ \\ | |  |  ___|'),
    writeln('  \\_/  \\_//_/ \\_\\|_|\\_\\|_|\\_\\|_||_____||_|\\_\\|___/     |_|  /_/ \\_\\|_|  |_____|'),
-   writeln('\n\nDigite *start* ou *help*.\n\n'),
+   text('Digite *start* ou *help*.'),
    ler(Opcao),
    selecionar(Opcao).
 
@@ -23,8 +20,8 @@ o cenário de forma bem simples.
 Nas batalhas aparecerá os valores dos atributos do inimigo ou do jogador 
 dependendo se ele usou uma habilidade ou o inimigo tenha usado.
 
-Para uma melhor experiência do jogo, ajuste a tela apertando (Ctrl Shift + ) 
-ou (Ctrl - ) até os traços que dividem o texto preencherem totalmente a tela 
+Para uma melhor experiência do jogo, ajuste a tela apertando (Ctrl Shift +) 
+ou (Ctrl -) até os traços que dividem o texto preencherem totalmente a tela 
 sem passar para linha de baixo.
 
 Digite *voltar* ou *sair*'),
@@ -33,7 +30,6 @@ Digite *voltar* ou *sair*'),
 
 selecionar(voltar):- mainMenu.
 
-selecionar(sair):- exit.
+selecionar(sair):- sair.
 
-selecionar(_):- text('Entrada Inválida'),
-   mainMenu.
+selecionar(_):- text('Entrada Inválida'), mainMenu.
