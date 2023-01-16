@@ -1,5 +1,3 @@
-:- [lib].
-
 eventosPart2(frente, Nome, 1):-
 	text('Você continua em frente até encontrar dois caminhos'),
 	write('Ir pela *esquerda* ou *direita*?'),
@@ -58,13 +56,13 @@ eventosPart2(esquerda, Nome, 5):- voltarInicio.
 
 eventosPart2(_, Nome, Nivel):- 
  	string_concat(Nome, ': Posso ir para *direita* ou *esquerda*', Texto),
-   write(Texto),
-   ler(Acao),
-   eventosPart2(Acao,Nome, Nivel).
+	write(Texto),
+	ler(Acao),
+	eventosPart2(Acao,Nome, Nivel).
 
 part2(Nome):-
-	text('Enquanto avança você avista 3 caminhos,  
-	um a esquerda, um a direia e um a sua frente'),
+	text('Enquanto avança você avista 3 caminhos, um a esquerda, um a direia e um a sua 
+frente'),
 	string_concat(Nome, ': Hmm, ir em *frente*, para *direita* ou *esquerda*', Texto2),
 	text(Texto2),
 	ler(Acao),
