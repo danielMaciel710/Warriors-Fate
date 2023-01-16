@@ -1,1 +1,0 @@
-Ficha {vida=30, forca=20, destreza=10, constituicao=20, inteligencia=0, mana=0, defesa=30, stamina=100, experiencia=1000, armadura=10, arma=["Espada", "15", "0"], pocao=20}

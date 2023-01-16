@@ -13,4 +13,5 @@ fimJogo:- text('                                 Fim de Jogo
 
 continuar:- text('Aperte Enter para continuar...'), ler(_).
    
+
 sair:- text('                                Encerrando...').

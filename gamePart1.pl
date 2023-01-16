@@ -1,9 +1,9 @@
 startGame:- text('Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros
 em um momento específico de sua jornada eram atraídos para uma misteriosa 
 caverna, esta que prometia à aqueles que superassem seus desafios um imenso 
-poder...'),	
+poder...'),
 	continuar,
-	chooseClass,	
+	chooseClass,
 	string_concat(Nome, ' cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:', Texto1),
 	text(Texto1),
 	text('Selecione a dificuldade:\n0. - Para fácil\n1. - Para médio\n2. - Para difícil\nLembre do .'),
@@ -134,4 +134,3 @@ part1(Perigo, Nome):-
 	text('Ir em *frente*, *direita* ou *esquerda*?'),
 	ler(Acao),
 	eventosPart1(Acao, Perigo, Nome).
-
