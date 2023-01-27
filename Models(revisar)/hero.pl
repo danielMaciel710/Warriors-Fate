@@ -1,7 +1,7 @@
-nome(Nome).
-class(Class).
+nome(Nome). %por enquanto não funciona
+class(guerreiro):- chooseClass(guerreiro).
+class(mago):- chooseClass(mago).
 
-/* Evitando de usar arquivo txt.
 vida(30).
 cura(20).
 
@@ -28,4 +28,4 @@ constituicao(20):- class(guerreiro).
 constituicao(10):- class(mago).
 
 arma(espada, 15, 0):- class(guerreiro).
-arma(cajado, 5, 10):- class(mago.)
+arma(cajado, 5, 10):- class(mago).
