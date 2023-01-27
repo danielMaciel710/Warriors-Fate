@@ -4,6 +4,10 @@ caverna, esta que prometia à aqueles que superassem seus desafios um imenso
 poder...'),
 	continuar,
 	chooseClass,
+	text('                            Digite o seu nome.'),
+	lerNome(Nome),
+	%Criar ficha da classe Warrior/Mago com o Nome passado pelo jogador.
+	text('                          Ficha criada com sucesso.'),
 	string_concat(Nome, ' cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:', Texto1),
 	text(Texto1),
 	text('Selecione a dificuldade:\n0. - Para fácil\n1. - Para médio\n2. - Para difícil\nLembre do .'),
@@ -16,19 +20,9 @@ chooseClass:- text('                 Escolha sua classe: "Guerreiro" ou "Mago"?'
 	ler(Opcao),
 	chooseClass(Opcao).
 
-chooseClass(guerreiro):- class(guerreiro),
-	text('                            Digite o seu nome.'),
-	lerNome(Nome),
-	nome(Nome),
-	%Criar ficha da classe Warrior com o Nome passado pelo jogador.
-	text('                          Ficha criada com sucesso.').
+chooseClass(guerreiro).
 
-chooseClass(mago):- class(mago),
-	text('                            Digite o seu nome.'),
-	lerNome(Nome),
-	nome(Nome),
-	%Criar ficha da classe Mage com o Nome passado pelo jogador.
-	text('                          Ficha criada com sucesso.').
+chooseClass(mago).
 
 chooseClass(_):- text('Classe inválida!'), chooseClass.
 
