@@ -67,7 +67,7 @@ caminho1(Perigo, Nome):-
 	ler(NovaAcao),
 	eventosPart1_2(NovaAcao, NewPerigo, Nome).
 
-caminho1_2(Perigo, Nome):-
+caminho1_2(Perigo, _):-
 	text('Você avançou mais e está bem em frente a saída dessa área'),
 	continuar,
 	NewPerigo is Perigo + 2,
@@ -103,10 +103,10 @@ Você bebe a poção e se sente revigorado!'),
 	continuar,
 	caminho4(Perigo, Nome).
 
-caminho4(Perigo, Nome):-
+caminho4(Perigo, _):-
 	text('Você se encontra em frente a saída...'),
 	continuar,
 	NewPerigo is Perigo + 2,
-	batalha(Perigo),
+	batalha(NewPerigo),
 	continuar,
 	text('Você avança para próxima área').
