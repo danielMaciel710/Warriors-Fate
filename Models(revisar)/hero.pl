@@ -1,6 +1,6 @@
-%O que eu tentei fazer nessa classe não tá dando certo
+/*O que eu tentei fazer nessa classe não tá dando certo
 
-nome(Nome). %por enquanto não funciona
+nome(Nome).
 class(mago):- chooseClass(mago).
 class(guerreiro):- chooseClass(guerreiro).
 
@@ -30,4 +30,4 @@ constituicao(20):- class(guerreiro).
 constituicao(10):- class(mago).
 
 arma(espada, 15, 0):- class(guerreiro).
-arma(cajado, 5, 10):- class(mago).
+arma(cajado, 5, 10):- class(mago).*/

@@ -9,7 +9,7 @@ corpo de humano, era verde escuro, suas escamas brilhavam refletindo as
 chamas.
 Então os 3 cavaleiros vão em sua direção, prepare-se!'),
 	continuar,
-	write('BatalhaPart3'),
+	text('[Batalha Final]'),
 	continuar,
 	text('???: Ha Ha Ha!'),
 	continuar,
