@@ -1,6 +1,8 @@
+%O que eu tentei fazer nessa classe não tá dando certo
+
 nome(Nome). %por enquanto não funciona
-class(guerreiro):- chooseClass(guerreiro).
 class(mago):- chooseClass(mago).
+class(guerreiro):- chooseClass(guerreiro).
 
 vida(30).
 cura(20).
