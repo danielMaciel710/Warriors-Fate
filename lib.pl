@@ -9,7 +9,7 @@ text(Texto):- string_concat('\n-------------------------------------------------
    writeln(TextoFormatado).
 
 fimJogo:- text('                                 Fim de Jogo
-                          Your Fate were determined').
+                          Your Fate were determined'), halt.
 
 continuar:- writeln('                       Aperte Enter para continuar...'), ler(_).
    
