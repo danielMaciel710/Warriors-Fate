@@ -61,7 +61,7 @@ eventosPart2(_, Nome, Nivel):-
 	eventosPart2(Acao,Nome, Nivel).
 
 part2(Nome):-
-	text('Enquanto avança você avista 3 caminhos, um a esquerda, um a direia e um a sua 
+	text('Enquanto avança você avista 3 caminhos, um a esquerda, um a direita e um a sua 
 frente'),
 	string_concat(Nome, ': Hmm, ir em *frente*, para *direita* ou *esquerda*', Texto2),
 	text(Texto2),

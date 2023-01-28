@@ -11,7 +11,7 @@ text(Texto):- string_concat('\n-------------------------------------------------
 fimJogo:- text('                                 Fim de Jogo
                           Your Fate were determined').
 
-continuar:- text('Aperte Enter para continuar...'), ler(_).
+continuar:- writeln('                       Aperte Enter para continuar...'), ler(_).
    
 
 sair:- text('                                Encerrando...').
