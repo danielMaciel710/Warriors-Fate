@@ -18,7 +18,7 @@ chooseClass:- text('                 Escolha sua classe: "Guerreiro" ou "Mago"?'
 	ler(Opcao),
 	chooseClass(Opcao).
 
-chooseClass(Opcao):- Opcao == 'guerreiro'; Opcao == 'mago'.
+chooseClass(Opcao):- Opcao == 'guerreiro', criarFicha('guerreiro'); Opcao == 'mago', criarFicha('mago').
 
 chooseClass(_):- text('Classe inválida!'), chooseClass.
 

@@ -1,4 +1,5 @@
 ler(Opcao):- read_line_to_codes(user_input, R), string_to_atom(R, R1), downcase_atom(R1, Opcao).
+lerNum(Opcao):- read_line_to_codes(user_input, Opcao).
 
 ler().
 
