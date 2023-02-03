@@ -7,7 +7,8 @@ poder...'),
 	text('                            Digite o seu nome.'),
 	lerNome(Nome),
 	text('                          Ficha criada com sucesso.'),
-	string_concat(Nome, ' cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:', Texto1),
+	string_concat(Nome, ' cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar 
+literalmente a sua frente:', Texto1),
 	text(Texto1),
 	selectDif(Dificuldade),
 	part1(Dificuldade, Nome),
@@ -107,6 +108,6 @@ caminho4(Perigo, _):-
 	text('Você se encontra em frente a saída...'),
 	continuar,
 	NewPerigo is Perigo + 2,
-	batalha(NewPerigo),
+	batalha(NewPerigo, pocao),
 	continuar,
 	text('Você avança para próxima área').
