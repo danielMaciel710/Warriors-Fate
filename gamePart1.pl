@@ -1,26 +1,20 @@
+initClass(Hero):- text('                 Escolha sua classe: "Guerreiro" ou "Mago"?'),
+        ler(Opcao),
+        chooseClass(Opcao, Hero).
+
+chooseClass(Opcao, Hero):- Opcao == 'guerreiro', criarFicha('guerreiro', Hero); Opcao == 'mago', criarFicha('mago', Hero); initClass(Hero).
+
 startGame:- text('Há muito tempo atrás numa terra distante, existia uma lenda: Bravos guerreiros
 em um momento específico de sua jornada eram atraídos para uma misteriosa 
 caverna, esta que prometia à aqueles que superassem seus desafios um imenso 
 poder...'),
 	continuar,
-	chooseClass,
-	text('                            Digite o seu nome.'),
-	lerNome(Nome),
-	text('                          Ficha criada com sucesso.'),
-	string_concat(Nome, ' cada vez mais foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:', Texto1),
-	text(Texto1),
+	initClass(Hero),
+	text('Cada vez mais você foi sendo atraído à esta misteriosa caverna até ela estar literalmente a sua frente:'),
 	selectDif(Dificuldade),
-	part1(Dificuldade, Nome),
-	part2(Nome),
-	part3.
-
-chooseClass:- text('                 Escolha sua classe: "Guerreiro" ou "Mago"?'),
-	ler(Opcao),
-	chooseClass(Opcao).
-
-chooseClass(Opcao):- Opcao == 'guerreiro', criarFicha('guerreiro'); Opcao == 'mago', criarFicha('mago').
-
-chooseClass(_):- text('Classe inválida!'), chooseClass.
+	part1(Dificuldade, Hero),
+	part2(Hero),
+	part3(Hero).
 
 selectDif(Dif):- text('Selecione a dificuldade:
 0 - Para fácil
@@ -34,7 +28,7 @@ definirDif(Dificuldade, Dif):- atom_number(Dificuldade, Dif), Dif =< 2.
 %Se o jogador colocar uma dificuldade inválida, a dificuldade será médio.
 definirDif(_, 1).
 
-part1(Perigo, Nome):-
+part1(Perigo, Hero):-
 	text('
 Ao por os pés dentro da mesma, rapidamente um clarão forte te atinge e uma 
 paisagem é formada instantaneamente. Com o céu num puro azul, um horizonte sem
@@ -53,60 +47,62 @@ Ao andar pela escuridão em direção a luz, algumas tochas se ascendem,
 revelando o local. O cenário era como uma caverna típica, porém havia um 
 grande abismo a esquerda um caminho pela frente e um caminho a direita. A luz
 que te guiou foi em direção ao caminho a sua frente.'),
-	continuar,
 	text('Ir em *frente*, *direita* ou *esquerda*?'),
 	ler(Acao),
-	eventosPart1(Acao, Perigo, Nome).
+	eventosPart1(Acao, Perigo, Hero).
 
-caminho1(Perigo, Nome):-
+caminho1(Perigo, Hero):-
 	text('Você se aproxima da saída...'),
 	continuar,
 	NewPerigo is Perigo + 1,
-	batalha(NewPerigo),
+	NewPerigo >= 2 -> apareceInimigo(0, Hero, Hero0),
 	text('Ir em *frente* ou *voltar*?'),
 	ler(NovaAcao),
-	eventosPart1_2(NovaAcao, NewPerigo, Nome).
+	eventosPart1_2(NovaAcao, NewPerigo, Hero0);
+	text('Ir em *frente* ou *voltar*?'),
+	ler(NovaAcao),
+	eventosPart1_2(NovaAcao, NewPerigo, Hero0).
 
-caminho1_2(Perigo, _):-
+caminho1_2(Perigo, Hero):-
 	text('Você avançou mais e está bem em frente a saída dessa área'),
 	continuar,
 	NewPerigo is Perigo + 2,
-	batalha(NewPerigo),
+	%batalha(NewPerigo),
 	continuar,
 	text('Você avança para próxima área').
 
-caminho2(Perigo, Nome):-
+caminho2(Perigo, Hero):-
 	text('Você vê um esqueleto no chão com uma espada bem velha, e ao seu lado tem um 
 pedestal antigo com alguma coisa escrita.'),
 	NewPerigo is Perigo + 1,
-	batalha(NewPerigo),
-   	string_concat(Nome, ': Eu deveria *ler pedestal*, *investigar esqueleto* ou *ir para luz*?', Texto),
+	%batalha(NewPerigo),
+   	string_concat('Eu deveria *ler pedestal*, *investigar esqueleto* ou *ir para luz*?', Texto),
 	text(Texto),
 	ler(Acao),
-	evento3(Acao, NewPerigo, Nome).
+	evento3(Acao, NewPerigo, Hero).
 
-caminho2_1(Perigo, Nome):-
-	text('"Para aqueles que buscam a verdadeira força: O fim começa agora. O fim mudará 
-conforme o agora. Desvie sua atenção, mas nunca esqueça para onde está indo."'),
+caminho2_1(Perigo, Hero):-
+	text("Para aqueles que buscam a verdadeira força: O fim começa agora. O fim mudará 
+conforme o agora. Desvie sua atenção, mas nunca esqueça para onde está indo."),
 	continuar,
-	caminho2(Perigo, Nome).
+	caminho2(Perigo, Hero).
 
-caminho2_2(Perigo, Nome):-
+caminho2_2(Perigo, Hero):-
 	text('O esqueleto começa a se mover'),
 	continuar,
-	batalha(Perigo),
+	%batalha(Perigo),
 	text('Você encontra uma poção de cura!
 Você bebe a poção e se sente revigorado!'),
 	continuar,
 	string_concat(Nome, ': Hmm, está na hora de eu ir até aquela luz!', Texto),
 	text(Texto),
 	continuar,
-	caminho4(Perigo, Nome).
+	caminho4(Perigo, Hero).
 
-caminho4(Perigo, _):-
+caminho4(Perigo, Hero):-
 	text('Você se encontra em frente a saída...'),
 	continuar,
 	NewPerigo is Perigo + 2,
-	batalha(NewPerigo),
+	%batalha(NewPerigo),
 	continuar,
 	text('Você avança para próxima área').

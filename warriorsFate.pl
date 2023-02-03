@@ -1,6 +1,8 @@
 :- [gameMenu],
     [lib],
+    [auxiliaresBatalha],
     [batalha],
+    [outrasFichas],
     [gamePart1],
     [gamePart2],
     [gamePart3],
