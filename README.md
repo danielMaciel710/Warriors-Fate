@@ -15,7 +15,7 @@ Todas as ações do jogador serão através da entrada de palavras ou frases. O 
 ## Como jogar (Versão em Prolog)
 * Será preciso instalar SWI-Prolog e o git, verificar no tutorial de instalação abaixo.
 * Após ter instalado, clone o repositório:
-* git clone https://github.com/danielMaciel710/Warriors-Fate
+* git clone https://github.com/danielMaciel710/Warriors-Fate.git
 * entre na pasta do jogo e de o comando:
 * git checkout prologMain
 * Agora para iniciar o jogo, escreva no terminal:
