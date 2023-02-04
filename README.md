@@ -18,10 +18,11 @@ Todas as ações do jogador serão através da entrada de palavras ou frases. O 
 * git clone https://github.com/danielMaciel710/Warriors-Fate.git
 * Caso esteja no windows, abra o Prompt de comando e entre na pasta do jogo, depois escreva:
 * git checkout prologMain
-* Agora para iniciar o jogo, escreva no terminal:
+* Agora para iniciar o jogo:
 * swipl warriorsFate.pl
 * iniciar. 
 * Obs: É necessário escrever o '.' do iniciar
+* No linux basta fazer o mesmo processo no Terminal.
 ## Ajustes para melhorar a experiência do jogo
 * De preferência coloque o terminal em tela cheia apertando F11, depois ajuste a tela do terminal apertando (Ctrl Shift + ) ou (Ctrl - ) até os traços que dividem o texto preencherem totalmente a tela sem passar para linha de baixo"
 ## Tutorial para instalação das dependências (Versão em Haskell)
